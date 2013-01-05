@@ -15,8 +15,6 @@
 		CFCE941D1697265300F7F7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE941C1697265300F7F7D1 /* UIKit.framework */; };
 		CFCE941F1697265300F7F7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE941E1697265300F7F7D1 /* Foundation.framework */; };
 		CFCE94211697265300F7F7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE94201697265300F7F7D1 /* CoreGraphics.framework */; };
-		CFCE94251697265300F7F7D1 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE94241697265300F7F7D1 /* CloseNormal.png */; };
-		CFCE94271697265300F7F7D1 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE94261697265300F7F7D1 /* CloseSelected.png */; };
 		CFCE94291697265300F7F7D1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE94281697265300F7F7D1 /* Default.png */; };
 		CFCE942B1697265300F7F7D1 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE942A1697265300F7F7D1 /* HelloWorld.png */; };
 		CFCE942D1697265300F7F7D1 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE942C1697265300F7F7D1 /* Icon-72.png */; };
@@ -191,8 +189,12 @@
 		CFCE967B1697265800F7F7D1 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFCE967A1697265800F7F7D1 /* AppController.mm */; };
 		CFCE967E1697265800F7F7D1 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFCE967D1697265800F7F7D1 /* RootViewController.mm */; };
 		CFCE96821697265800F7F7D1 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96811697265800F7F7D1 /* AppDelegate.cpp */; };
-		CFCE96851697265800F7F7D1 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96841697265800F7F7D1 /* HelloWorldScene.cpp */; };
 		CFCE968C1697267E00F7F7D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */; };
+		CFCE96941697D51E00F7F7D1 /* GlobalWork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96931697D51E00F7F7D1 /* GlobalWork.cpp */; };
+		CFCE96981697D6BE00F7F7D1 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */; };
+		CFCE969B1697DB7200F7F7D1 /* rawData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCE96991697DB7200F7F7D1 /* rawData.plist */; };
+		CFCE969C1697DB7200F7F7D1 /* rawData.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE969A1697DB7200F7F7D1 /* rawData.png */; };
+		CFCE969F1697E0B000F7F7D1 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,8 +207,6 @@
 		CFCE941C1697265300F7F7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CFCE941E1697265300F7F7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CFCE94201697265300F7F7D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CFCE94241697265300F7F7D1 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = Resources/CloseNormal.png; sourceTree = "<group>"; };
-		CFCE94261697265300F7F7D1 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = Resources/CloseSelected.png; sourceTree = "<group>"; };
 		CFCE94281697265300F7F7D1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		CFCE942A1697265300F7F7D1 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelloWorld.png; path = Resources/HelloWorld.png; sourceTree = "<group>"; };
 		CFCE942C1697265300F7F7D1 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
@@ -591,9 +591,16 @@
 		CFCE967D1697265800F7F7D1 /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		CFCE96801697265800F7F7D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		CFCE96811697265800F7F7D1 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		CFCE96831697265800F7F7D1 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		CFCE96841697265800F7F7D1 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
-		CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		CFCE96911697D4B200F7F7D1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Common.h; path = Classes/Common.h; sourceTree = "<group>"; };
+		CFCE96921697D51400F7F7D1 /* GlobalWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalWork.h; sourceTree = "<group>"; };
+		CFCE96931697D51E00F7F7D1 /* GlobalWork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalWork.cpp; sourceTree = "<group>"; };
+		CFCE96961697D6B400F7F7D1 /* MenuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
+		CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
+		CFCE96991697DB7200F7F7D1 /* rawData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = rawData.plist; path = Resources/rawData.plist; sourceTree = "<group>"; };
+		CFCE969A1697DB7200F7F7D1 /* rawData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rawData.png; path = Resources/rawData.png; sourceTree = "<group>"; };
+		CFCE969D1697E0A600F7F7D1 /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -618,7 +625,6 @@
 		CFCE94031697265300F7F7D1 = {
 			isa = PBXGroup;
 			children = (
-				CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */,
 				CFCE94221697265300F7F7D1 /* Lifenals */,
 				CFCE94111697265300F7F7D1 /* Frameworks */,
 				CFCE940F1697265300F7F7D1 /* Products */,
@@ -651,6 +657,7 @@
 		CFCE94221697265300F7F7D1 /* Lifenals */ = {
 			isa = PBXGroup;
 			children = (
+				CFCE96951697D60900F7F7D1 /* Scene */,
 				CFCE94231697265300F7F7D1 /* Resources */,
 				CFCE943B1697265400F7F7D1 /* libs */,
 				CFCE96761697265800F7F7D1 /* ios */,
@@ -663,8 +670,9 @@
 		CFCE94231697265300F7F7D1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CFCE94241697265300F7F7D1 /* CloseNormal.png */,
-				CFCE94261697265300F7F7D1 /* CloseSelected.png */,
+				CFCE96991697DB7200F7F7D1 /* rawData.plist */,
+				CFCE969A1697DB7200F7F7D1 /* rawData.png */,
+				CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */,
 				CFCE94281697265300F7F7D1 /* Default.png */,
 				CFCE942A1697265300F7F7D1 /* HelloWorld.png */,
 				CFCE942C1697265300F7F7D1 /* Icon-72.png */,
@@ -1405,10 +1413,22 @@
 			children = (
 				CFCE96801697265800F7F7D1 /* AppDelegate.h */,
 				CFCE96811697265800F7F7D1 /* AppDelegate.cpp */,
-				CFCE96831697265800F7F7D1 /* HelloWorldScene.h */,
-				CFCE96841697265800F7F7D1 /* HelloWorldScene.cpp */,
+				CFCE96911697D4B200F7F7D1 /* Common.h */,
+				CFCE96921697D51400F7F7D1 /* GlobalWork.h */,
+				CFCE96931697D51E00F7F7D1 /* GlobalWork.cpp */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		CFCE96951697D60900F7F7D1 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CFCE96961697D6B400F7F7D1 /* MenuLayer.h */,
+				CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */,
+				CFCE969D1697E0A600F7F7D1 /* GameLayer.h */,
+				CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */,
+			);
+			name = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1461,8 +1481,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFCE94251697265300F7F7D1 /* CloseNormal.png in Resources */,
-				CFCE94271697265300F7F7D1 /* CloseSelected.png in Resources */,
 				CFCE94291697265300F7F7D1 /* Default.png in Resources */,
 				CFCE942B1697265300F7F7D1 /* HelloWorld.png in Resources */,
 				CFCE942D1697265300F7F7D1 /* Icon-72.png in Resources */,
@@ -1474,6 +1492,8 @@
 				CFCE94391697265400F7F7D1 /* iTunesArtwork in Resources */,
 				CFCE94C11697265500F7F7D1 /* ChangeLog in Resources */,
 				CFCE968C1697267E00F7F7D1 /* Default-568h@2x.png in Resources */,
+				CFCE969B1697DB7200F7F7D1 /* rawData.plist in Resources */,
+				CFCE969C1697DB7200F7F7D1 /* rawData.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1648,7 +1668,9 @@
 				CFCE967B1697265800F7F7D1 /* AppController.mm in Sources */,
 				CFCE967E1697265800F7F7D1 /* RootViewController.mm in Sources */,
 				CFCE96821697265800F7F7D1 /* AppDelegate.cpp in Sources */,
-				CFCE96851697265800F7F7D1 /* HelloWorldScene.cpp in Sources */,
+				CFCE96941697D51E00F7F7D1 /* GlobalWork.cpp in Sources */,
+				CFCE96981697D6BE00F7F7D1 /* MenuLayer.cpp in Sources */,
+				CFCE969F1697E0B000F7F7D1 /* GameLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1717,6 +1739,7 @@
 				GCC_PREFIX_HEADER = Lifenals/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = Lifenals/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
@@ -1735,6 +1758,7 @@
 				GCC_PREFIX_HEADER = Lifenals/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = Lifenals/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",

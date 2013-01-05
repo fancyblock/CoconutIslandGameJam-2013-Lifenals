@@ -3,7 +3,7 @@
 //  Lifenals
 //
 //  Created by He JiaBin on 13-1-4.
-//  Copyright __MyCompanyName__ 2013年. All rights reserved.
+//  Copyright CoconutIslandStudio 2013年. All rights reserved.
 //
 
 #ifndef  _APP_DELEGATE_H_
@@ -40,6 +40,8 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+    
+    void loadResource();
 };
 
 #endif // _APP_DELEGATE_H_
