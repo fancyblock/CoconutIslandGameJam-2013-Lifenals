@@ -20,6 +20,9 @@ public:
     static cocos2d::CCScene* scene();
     
     void onStartGame( CCObject* sender );
+    void onHelp( CCObject* sender );
+    void onSettings( CCObject* sender );
+    void onAbout( CCObject* sender );
     
     CREATE_FUNC( MenuLayer );
     

@@ -1,23 +1,23 @@
 //
-//  GameLayer.cpp
+//  TestLayer.cpp
 //  Lifenals
 //
 //  Created by He JiaBin on 13-1-5.
 //
 //
 
-#include "GameLayer.h"
+#include "TestLayer.h"
 #include "GlobalWork.h"
 #include "Common.h"
 
 
-CCScene* GameLayer::scene()
+CCScene* TestLayer::scene()
 {
     // 'scene' is an autorelease object
     CCScene *scene = CCScene::create();
     
     // 'layer' is an autorelease object
-    GameLayer *layer = GameLayer::create();
+    TestLayer *layer = TestLayer::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -28,7 +28,7 @@ CCScene* GameLayer::scene()
 
 
 // on "init" you need to initialize your instance
-bool GameLayer::init()
+bool TestLayer::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -38,10 +38,23 @@ bool GameLayer::init()
     }
     
     // add background
-    //TODO 
+    //TODO
     
     // create menu
-    //TODO 
+    //TODO
+    
+    initGame();
     
     return true;
 }
+
+
+void TestLayer::initGame()
+{
+    m_incubator = new GridSpace();
+    m_incubator->Create();
+    
+    //TODO
+    
+}
+

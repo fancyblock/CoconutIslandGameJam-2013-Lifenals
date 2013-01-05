@@ -14,7 +14,7 @@
 USING_NS_CC;
 
 
-class GameLayer : public cocos2d::CCLayer
+class GameLayer : public CCLayer
 {
 public:
     virtual bool init();

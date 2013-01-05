@@ -195,6 +195,11 @@
 		CFCE969B1697DB7200F7F7D1 /* rawData.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCE96991697DB7200F7F7D1 /* rawData.plist */; };
 		CFCE969C1697DB7200F7F7D1 /* rawData.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCE969A1697DB7200F7F7D1 /* rawData.png */; };
 		CFCE969F1697E0B000F7F7D1 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */; };
+		CFCE96A3169813CA00F7F7D1 /* GridSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A2169813CA00F7F7D1 /* GridSpace.cpp */; };
+		CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */; };
+		CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A816981A0700F7F7D1 /* ActionSlot.cpp */; };
+		CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */; };
+		CFCE96B116982FFA00F7F7D1 /* TestLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -601,6 +606,17 @@
 		CFCE969A1697DB7200F7F7D1 /* rawData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rawData.png; path = Resources/rawData.png; sourceTree = "<group>"; };
 		CFCE969D1697E0A600F7F7D1 /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		CFCE96A1169813BE00F7F7D1 /* GridSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridSpace.h; sourceTree = "<group>"; };
+		CFCE96A2169813CA00F7F7D1 /* GridSpace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GridSpace.cpp; sourceTree = "<group>"; };
+		CFCE96A41698148200F7F7D1 /* SpriteLife.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpriteLife.h; sourceTree = "<group>"; };
+		CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteLife.cpp; sourceTree = "<group>"; };
+		CFCE96A7169819FC00F7F7D1 /* ActionSlot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionSlot.h; sourceTree = "<group>"; };
+		CFCE96A816981A0700F7F7D1 /* ActionSlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionSlot.cpp; sourceTree = "<group>"; };
+		CFCE96AB16981D1C00F7F7D1 /* Nutrient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nutrient.h; sourceTree = "<group>"; };
+		CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nutrient.cpp; sourceTree = "<group>"; };
+		CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSettings.h; sourceTree = "<group>"; };
+		CFCE96AF16982FEF00F7F7D1 /* TestLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
+		CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestLayer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,6 +673,7 @@
 		CFCE94221697265300F7F7D1 /* Lifenals */ = {
 			isa = PBXGroup;
 			children = (
+				CFCE96A01697E23300F7F7D1 /* Game */,
 				CFCE96951697D60900F7F7D1 /* Scene */,
 				CFCE94231697265300F7F7D1 /* Resources */,
 				CFCE943B1697265400F7F7D1 /* libs */,
@@ -1427,8 +1444,26 @@
 				CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */,
 				CFCE969D1697E0A600F7F7D1 /* GameLayer.h */,
 				CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */,
+				CFCE96AF16982FEF00F7F7D1 /* TestLayer.h */,
+				CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */,
 			);
 			name = Scene;
+			sourceTree = "<group>";
+		};
+		CFCE96A01697E23300F7F7D1 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				CFCE96A1169813BE00F7F7D1 /* GridSpace.h */,
+				CFCE96A2169813CA00F7F7D1 /* GridSpace.cpp */,
+				CFCE96A41698148200F7F7D1 /* SpriteLife.h */,
+				CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */,
+				CFCE96A7169819FC00F7F7D1 /* ActionSlot.h */,
+				CFCE96A816981A0700F7F7D1 /* ActionSlot.cpp */,
+				CFCE96AB16981D1C00F7F7D1 /* Nutrient.h */,
+				CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */,
+				CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1671,6 +1706,11 @@
 				CFCE96941697D51E00F7F7D1 /* GlobalWork.cpp in Sources */,
 				CFCE96981697D6BE00F7F7D1 /* MenuLayer.cpp in Sources */,
 				CFCE969F1697E0B000F7F7D1 /* GameLayer.cpp in Sources */,
+				CFCE96A3169813CA00F7F7D1 /* GridSpace.cpp in Sources */,
+				CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */,
+				CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */,
+				CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */,
+				CFCE96B116982FFA00F7F7D1 /* TestLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

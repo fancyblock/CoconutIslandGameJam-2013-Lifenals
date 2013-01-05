@@ -11,6 +11,10 @@
 #include "Common.h"
 #include "GameLayer.h"
 
+#ifdef DEBUG_MODE
+#include "TestLayer.h"
+#endif
+
 USING_NS_CC;
 
 
@@ -40,14 +44,21 @@ bool MenuLayer::init()
         return false;
     }
     
-    // add background
+    // add background 
     //TODO 
     
-    // create menu          [TEMP]
+    // create menu
     CCMenuItemFont* btnStartGame = CCMenuItemFont::create( "Start Game", this, menu_selector(MenuLayer::onStartGame));
-    btnStartGame->setPosition( POS(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) );
+    btnStartGame->setPosition( POS(SCREEN_WIDTH/2, 320) );
+    CCMenuItemFont* btnHelp = CCMenuItemFont::create( "Help", this, menu_selector(MenuLayer::onHelp));
+    btnHelp->setPosition( POS(SCREEN_WIDTH/2, 240) );
+    CCMenuItemFont* btnSettings = CCMenuItemFont::create( "Settings", this, menu_selector(MenuLayer::onSettings));
+    btnSettings->setPosition( POS(SCREEN_WIDTH/2, 160) );
+    CCMenuItemFont* btnAbout = CCMenuItemFont::create( "About", this, menu_selector(MenuLayer::onAbout));
+    btnAbout->setPosition( POS(SCREEN_WIDTH/2, 80) );
     
-    CCMenu* menu = CCMenu::create( btnStartGame, NULL );
+    CCMenu* menu = CCMenu::create( btnStartGame, btnHelp, btnSettings, btnAbout, NULL );
+
     menu->setPosition( 0, 0 );
     this->addChild( menu, 0 );
     
@@ -60,4 +71,28 @@ void MenuLayer::onStartGame( CCObject* sender )
     CCDirector::sharedDirector()->replaceScene( CCTransitionFade::create( SCENE_TRANS_TIME, GameLayer::scene() ) );
 }
 
+void MenuLayer::onHelp( CCObject* sender )
+{
+    //TODO
+    
+    CCLog( "[Help]" );
+}
 
+void MenuLayer::onSettings( CCObject* sender )
+{
+    //TODO
+    
+    CCLog( "[Settings]" );
+}
+
+void MenuLayer::onAbout( CCObject* sender )
+{
+    
+#ifdef DEBUG_MODE
+    CCDirector::sharedDirector()->replaceScene( CCTransitionFade::create( SCENE_TRANS_TIME, TestLayer::scene() ) );
+#else
+    //TODO
+#endif
+    
+    CCLog( "[About]" );
+}
