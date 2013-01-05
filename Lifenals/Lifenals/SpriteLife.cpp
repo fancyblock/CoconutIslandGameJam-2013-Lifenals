@@ -8,9 +8,3 @@
 
 #include "SpriteLife.h"
 
-
-class SpriteLife
-{
-public:
-    //TODO 
-};

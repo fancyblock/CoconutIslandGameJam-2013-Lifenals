@@ -9,9 +9,11 @@
 #ifndef Lifenals_GridSpace_h
 #define Lifenals_GridSpace_h
 
+#include "cocos2d.h"
 #include "GameSettings.h"
 #include "SpriteLife.h"
 
+USING_NS_CC;
 
 class GridSpace
 {
@@ -21,9 +23,11 @@ public:
     
     void Create();
     bool AddLife( SpriteLife* life, int posX, int posY );
+    void Update( float elapsed );
+    void SetDisplayLayer( CCNode* layer );
     
 protected:
-    //TODO 
+    CCNode* m_displayLayer;
 };
 
 

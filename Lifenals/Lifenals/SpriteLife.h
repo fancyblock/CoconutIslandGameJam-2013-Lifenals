@@ -9,6 +9,8 @@
 #ifndef Lifenals_SpriteLife_h
 #define Lifenals_SpriteLife_h
 
+#include "ActionSlot.h"
+
 
 class SpriteLife
 {

@@ -9,8 +9,3 @@
 #include "Nutrient.h"
 
 
-class Nutrient
-{
-public:
-    //TODO
-};

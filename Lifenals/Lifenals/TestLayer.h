@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GridSpace.h"
+#include "SpriteLife.h"
 
 USING_NS_CC;
 
@@ -23,8 +24,14 @@ public:
     
     CREATE_FUNC( TestLayer );
     
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void onEnterTransitionDidFinish();
+    void update( float elapsed );
+    
 protected:
     GridSpace* m_incubator;
+    CCSprite* m_gameStuffLayer;
     
 protected:
     void initGame();

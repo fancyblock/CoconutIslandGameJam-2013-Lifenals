@@ -34,3 +34,14 @@ bool GridSpace::AddLife( SpriteLife* life, int posX, int posY )
     return true;
 }
 
+
+void GridSpace::Update( float elapsed )
+{
+    //TODO 
+}
+
+
+void GridSpace::SetDisplayLayer( CCNode* layer )
+{
+    //TODO 
+}

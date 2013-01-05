@@ -38,12 +38,18 @@ bool TestLayer::init()
     }
     
     // add background
-    //TODO
+    CCSprite* sprBg = CCSprite::createWithSpriteFrameName( "ingameBg.png" );
+    sprBg->setPosition( POS( SCREEN_WIDTH/2, SCREEN_HEIGHT/2 ) );
+    sprBg->setScaleX( SGLOBAL.GetSizeFactorX() );
+    sprBg->setScaleY( SGLOBAL.GetSizeFactorY() );
+    this->addChild( sprBg );
     
     // create menu
     //TODO
     
     initGame();
+    
+    this->scheduleUpdate();
     
     return true;
 }
@@ -51,10 +57,50 @@ bool TestLayer::init()
 
 void TestLayer::initGame()
 {
+    // create && initial the incubator
     m_incubator = new GridSpace();
     m_incubator->Create();
     
-    //TODO
+    // add a life into incubator
+    SpriteLife* life = new SpriteLife();
+    m_incubator->AddLife( life, 2, 2 );     //[HACK]
     
+    // setup display stuff
+    m_gameStuffLayer = CCSprite::create();
+    m_incubator->SetDisplayLayer( m_gameStuffLayer );
+    
+    this->addChild( m_gameStuffLayer );
+}
+
+
+void TestLayer::onEnter()
+{
+    CCLog( "[TestLayer]: Enter" );
+    
+    //TODO 
+}
+
+
+void TestLayer::onExit()
+{
+    CCLog( "[TestLayer]: Exit" );
+    
+    //TODO
+}
+
+
+void TestLayer::onEnterTransitionDidFinish()
+{
+    CCLog( "[TestLayer]: EnterTransitionDidFinish" );
+    
+    //TODO 
+}
+
+
+void TestLayer::update( float elapsed )
+{
+    //TODO 
+    
+    m_incubator->Update( elapsed );
 }
 

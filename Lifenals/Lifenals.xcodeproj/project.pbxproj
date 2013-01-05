@@ -1453,6 +1453,7 @@
 		CFCE96A01697E23300F7F7D1 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				CFCE96BA1698544800F7F7D1 /* Ability */,
 				CFCE96A1169813BE00F7F7D1 /* GridSpace.h */,
 				CFCE96A2169813CA00F7F7D1 /* GridSpace.cpp */,
 				CFCE96A41698148200F7F7D1 /* SpriteLife.h */,
@@ -1464,6 +1465,13 @@
 				CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */,
 			);
 			name = Game;
+			sourceTree = "<group>";
+		};
+		CFCE96BA1698544800F7F7D1 /* Ability */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
