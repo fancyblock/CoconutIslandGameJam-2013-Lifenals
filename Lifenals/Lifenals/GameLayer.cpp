@@ -49,8 +49,6 @@ bool GameLayer::init()
     
     initGame();
     
-    this->scheduleUpdate();
-    
     return true;
 }
 
@@ -88,6 +86,8 @@ void GameLayer::onExit()
     
     //TODO
     
+    this->unscheduleUpdate();
+    
     CCLayer::onExit();
 }
 
@@ -97,6 +97,8 @@ void GameLayer::onEnterTransitionDidFinish()
     CCLayer::onEnterTransitionDidFinish();
     
     CCLog( "[GameLayer]: EnterTransitionDidFinish" );
+    
+    this->scheduleUpdate();
     
     //TODO
 }

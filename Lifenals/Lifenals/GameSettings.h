@@ -16,4 +16,7 @@
 #define ARENA_WID       6
 #define ARENA_HEI       6
 
+#define SPRITE_WID      84
+#define SPRITE_HEI      84
+
 #endif

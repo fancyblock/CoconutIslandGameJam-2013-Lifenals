@@ -11,9 +11,22 @@
 
 #include "ActionSlot.h"
 #include "Incubator.h"
+#include "cocos2d.h"
+
+USING_NS_CC;
+
+enum
+{
+    eNone = 0,
+    eAlive,
+    eDead,
+    eAppear,
+    eDisappear,
+    eActive
+};
 
 
-class SpriteLife
+class SpriteLife : public CCObject
 {
 public:
     SpriteLife();
@@ -22,6 +35,15 @@ public:
     void GetPosition( int& x, int& y );
     void SetContainer( Incubator* container );
     Incubator* GetContainer();
+    int GetStatus();
+    void SetStatus( int status );
+    void SetDisplayLayer( CCNode* layer );
+    
+    void onAdd();
+    void onRemove();
+    void onMove();
+    void onUpdate( float dt );
+    void onActive();
     
 protected:
     Incubator* m_container;
@@ -29,6 +51,9 @@ protected:
     
     int m_x;
     int m_y;
+    int m_status;
+    
+    CCNode* m_displayLayer;
 };
 
 

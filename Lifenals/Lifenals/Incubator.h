@@ -23,6 +23,7 @@ public:
     virtual bool RemoveLife( int posX, int posY ) = 0;
     virtual SpriteLife* GetLife( int posX, int posY ) = 0;
     virtual void Update( float elapsed ) = 0;
+    virtual void RemoveAllLives() = 0;
 
 };
 

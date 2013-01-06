@@ -38,14 +38,22 @@ public:
     virtual bool RemoveLife( int posX, int posY );
     virtual SpriteLife* GetLife( int posX, int posY );
     virtual void Update( float elapsed );
+    virtual void RemoveAllLives();
     
 protected:
     CCNode* m_displayLayer;
     gridInfo** m_grids;
     
+    CCArray* m_lives;
+    CCArray* m_pendingLives;
+    
+    int m_curActiveLife;
+    
 protected:
     gridInfo* getGridInfo( int x, int y );
     bool removeLife( SpriteLife* life );
+    int getCurActiveLife();
+
 };
 
 

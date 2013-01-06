@@ -13,6 +13,7 @@ GridSpace::GridSpace()
 {
     m_displayLayer = NULL;
     m_grids = NULL;
+    m_curActiveLife = -1;
 }
 
 
@@ -44,6 +45,12 @@ void GridSpace::Create( CCNode* layer )
             m_grids[i][j]._nutrient = NULL;
         }
     }
+    
+    // create life list
+    m_lives = CCArray::createWithCapacity(GRID_SIZE_WID*GRID_SIZE_HEI);
+    m_lives->retain();
+    m_pendingLives = CCArray::createWithCapacity(GRID_SIZE_WID*GRID_SIZE_HEI);
+    m_pendingLives->retain();
 }
 
 
@@ -61,9 +68,10 @@ bool GridSpace::AddLife( SpriteLife* life, int posX, int posY )
         return false;
     }
     
-    grid->_life = life;
-    life->SetContainer( this );
+    // add to pending list
+    life->SetStatus( eAppear );
     life->SetPosition( posX, posY );
+    m_pendingLives->addObject( life );
     
     return true;
 }
@@ -100,6 +108,67 @@ SpriteLife* GridSpace::GetLife( int posX, int posY )
 
 void GridSpace::Update( float elapsed )
 {
+    SpriteLife* life = NULL;
+    int i;
+    
+    int lifeCnt = m_lives->count();
+    
+    // activite the life 
+    int curActiveLife = getCurActiveLife();
+    if( curActiveLife < 0 && lifeCnt > 0 )         // need to set a new one
+    {
+        m_curActiveLife++;
+        m_curActiveLife %= lifeCnt;
+        
+        life = (SpriteLife*)m_lives->objectAtIndex( m_curActiveLife );
+        life->SetStatus( eActive );
+        life->onActive();
+    }
+    
+    // update the life
+    for( i = 0; i < lifeCnt; i++ )
+    {
+        life = (SpriteLife*)m_lives->objectAtIndex( i );
+        life->onUpdate( elapsed );
+    }
+    
+    // process the pending life ( remove || add new one )
+    for( i = 0; i < m_pendingLives->count(); i++ )
+    {
+        life = (SpriteLife*)m_pendingLives->objectAtIndex( i );
+        
+        int status = life->GetStatus();
+        int x, y;
+        life->GetPosition( x, y );
+        gridInfo* grid = getGridInfo( x, y );
+        
+        if( status == eAppear )
+        {
+            grid->_life = life;
+            life->SetContainer( this );
+            m_lives->addObject( life );
+            life->SetDisplayLayer( m_displayLayer );
+            life->onAdd();
+            
+            life->SetStatus( eAlive );
+        }
+        else if( status == eDisappear )
+        {
+            life->SetContainer( NULL );
+            m_lives->removeObject( life );
+            grid->_life = NULL;
+            life->onRemove();
+            
+            life->SetStatus( eDead );
+        }
+    }
+    m_pendingLives->removeAllObjects();
+    
+}
+
+
+void GridSpace::RemoveAllLives()
+{
     //TODO 
 }
 
@@ -133,10 +202,30 @@ bool GridSpace::removeLife( SpriteLife* life )
     
     if( grid != NULL )
     {
-        //TODO 
+        // add to pending list
+        life->SetStatus( eDisappear );
+        m_pendingLives->addObject( life );
     }
     
     return false;
 }
 
+
+int GridSpace::getCurActiveLife()
+{
+    int idx = -1;
+    
+    for( int i(0); i < m_lives->count(); i++ )
+    {
+        SpriteLife* life = (SpriteLife*)m_lives->objectAtIndex( i );
+        
+        if( life->GetStatus() == eActive )
+        {
+            idx = i;
+            break;
+        }
+    }
+    
+    return idx;
+}
 
