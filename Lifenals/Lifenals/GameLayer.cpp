@@ -10,6 +10,9 @@
 #include "GlobalWork.h"
 #include "Common.h"
 
+#define GRID_SPACE_X    276
+#define GRID_SPACE_Y    105
+
 
 CCScene* GameLayer::scene()
 {
@@ -57,6 +60,7 @@ void GameLayer::initGame()
 {
     // setup display stuff
     m_gameStuffLayer = CCSprite::create();
+    m_gameStuffLayer->setPosition( POS( GRID_SPACE_X, GRID_SPACE_Y ) );
     
     // create && initial the incubator
     m_incubator = new GridSpace();

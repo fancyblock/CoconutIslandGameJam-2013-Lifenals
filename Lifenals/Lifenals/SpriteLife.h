@@ -12,6 +12,7 @@
 #include "ActionSlot.h"
 #include "Incubator.h"
 #include "cocos2d.h"
+#include "LifeDisplay.h"
 
 USING_NS_CC;
 
@@ -38,6 +39,7 @@ public:
     int GetStatus();
     void SetStatus( int status );
     void SetDisplayLayer( CCNode* layer );
+    ActionSlot* GetActionSlot();
     
     void onAdd();
     void onRemove();
@@ -52,8 +54,14 @@ protected:
     int m_x;
     int m_y;
     int m_status;
+    int m_curActionIdx;
     
     CCNode* m_displayLayer;
+    LifeDisplay* m_lifeDisplay;
+    
+protected:
+    void initDisplay();
+    
 };
 
 

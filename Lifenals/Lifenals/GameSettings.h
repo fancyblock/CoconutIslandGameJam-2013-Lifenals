@@ -19,4 +19,8 @@
 #define SPRITE_WID      84
 #define SPRITE_HEI      84
 
+
+#define MAX_SLOT_CAPACITY    5
+
+
 #endif

@@ -8,6 +8,10 @@
 
 #include "SpriteLife.h"
 #include "cocos2d.h"
+#include "ActionGene.h"
+#include "Common.h"
+#include "GlobalWork.h"
+
 
 USING_NS_CC;
 
@@ -15,10 +19,12 @@ USING_NS_CC;
 SpriteLife::SpriteLife()
 {
     m_container = NULL;
+    m_lifeDisplay = NULL;
     
     m_x = 0;
     m_y = 0;
     m_status = eNone;
+    m_curActionIdx = -1;
 }
 
 
@@ -56,13 +62,19 @@ Incubator* SpriteLife::GetContainer()
 
 void SpriteLife::onAdd()
 {
+    // add to parent and then play some appear animation
+    this->initDisplay();
+    
     //TODO
+    
 }
 
 
 void SpriteLife::onRemove()
 {
-    //TODO
+    // play some animation and then remove from parent
+    
+    //TODO 
 }
 
 
@@ -82,7 +94,21 @@ void SpriteLife::onActive()
 {
     CCLog( "[SpriteLife]: onActive" );
     
-    //TODO 
+    int geneCnt = m_actionSlot.GetGeneCount();
+    
+    if( geneCnt == 0 )
+    {
+        // invoke the next life 
+        m_lifeDisplay->Flicker();
+    }
+    else
+    {
+        m_curActionIdx++;
+        m_curActionIdx %= geneCnt;
+        
+        ActionGene* actionGene = m_actionSlot.GetActionGene( m_curActionIdx );
+        actionGene->Start( this );
+    }
 }
 
 
@@ -102,4 +128,26 @@ void SpriteLife::SetDisplayLayer( CCNode* layer )
 {
     m_displayLayer = layer;
 }
+
+
+ActionSlot* SpriteLife::GetActionSlot()
+{
+    return &m_actionSlot;
+}
+
+
+void SpriteLife::initDisplay()
+{
+    // create the life display and add to the display layer
+    m_lifeDisplay = new LifeDisplay();
+    m_lifeDisplay->Create( this );
+    
+    CCSprite* spr = m_lifeDisplay->GetDisplay();
+    spr->setPosition( POS( m_x*SPRITE_WID, m_y*SPRITE_HEI));
+    m_displayLayer->addChild( spr );
+}
+
+
+
+
 

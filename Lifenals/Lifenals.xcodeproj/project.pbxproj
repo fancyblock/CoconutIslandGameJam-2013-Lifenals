@@ -199,6 +199,7 @@
 		CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */; };
 		CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A816981A0700F7F7D1 /* ActionSlot.cpp */; };
 		CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */; };
+		CFCE96C5169A23AF00F7F7D1 /* LifeDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96C4169A23AF00F7F7D1 /* LifeDisplay.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -615,6 +616,9 @@
 		CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nutrient.cpp; sourceTree = "<group>"; };
 		CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSettings.h; sourceTree = "<group>"; };
 		CFCE96BB1699225300F7F7D1 /* Incubator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Incubator.h; sourceTree = "<group>"; };
+		CFCE96C216997D1700F7F7D1 /* ActionGene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionGene.h; sourceTree = "<group>"; };
+		CFCE96C3169A23A200F7F7D1 /* LifeDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeDisplay.h; sourceTree = "<group>"; };
+		CFCE96C4169A23AF00F7F7D1 /* LifeDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LifeDisplay.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1460,6 +1464,8 @@
 				CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */,
 				CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */,
 				CFCE96BB1699225300F7F7D1 /* Incubator.h */,
+				CFCE96C3169A23A200F7F7D1 /* LifeDisplay.h */,
+				CFCE96C4169A23AF00F7F7D1 /* LifeDisplay.cpp */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1467,6 +1473,7 @@
 		CFCE96BA1698544800F7F7D1 /* Ability */ = {
 			isa = PBXGroup;
 			children = (
+				CFCE96C216997D1700F7F7D1 /* ActionGene.h */,
 			);
 			name = Ability;
 			sourceTree = "<group>";
@@ -1715,6 +1722,7 @@
 				CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */,
 				CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */,
 				CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */,
+				CFCE96C5169A23AF00F7F7D1 /* LifeDisplay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

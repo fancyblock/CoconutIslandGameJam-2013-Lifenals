@@ -142,6 +142,7 @@ void GridSpace::Update( float elapsed )
         life->GetPosition( x, y );
         gridInfo* grid = getGridInfo( x, y );
         
+        // add life to the space 
         if( status == eAppear )
         {
             grid->_life = life;
@@ -152,6 +153,7 @@ void GridSpace::Update( float elapsed )
             
             life->SetStatus( eAlive );
         }
+        // remove life from the space 
         else if( status == eDisappear )
         {
             life->SetContainer( NULL );
