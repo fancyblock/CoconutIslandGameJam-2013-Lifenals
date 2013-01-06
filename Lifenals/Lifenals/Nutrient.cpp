@@ -9,3 +9,20 @@
 #include "Nutrient.h"
 
 
+Nutrient::Nutrient()
+{
+    //TODO
+}
+
+
+Nutrient::~Nutrient()
+{
+    //TODO
+}
+
+
+void Nutrient::Update( float dt )
+{
+    //TODO
+}
+

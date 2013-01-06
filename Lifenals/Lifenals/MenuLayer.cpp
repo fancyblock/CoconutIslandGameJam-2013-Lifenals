@@ -11,10 +11,6 @@
 #include "Common.h"
 #include "GameLayer.h"
 
-#ifdef DEBUG_MODE
-#include "TestLayer.h"
-#endif
-
 USING_NS_CC;
 
 
@@ -88,11 +84,7 @@ void MenuLayer::onSettings( CCObject* sender )
 void MenuLayer::onAbout( CCObject* sender )
 {
     
-#ifdef DEBUG_MODE
-    CCDirector::sharedDirector()->replaceScene( CCTransitionFade::create( SCENE_TRANS_TIME, TestLayer::scene() ) );
-#else
     //TODO
-#endif
     
     CCLog( "[About]" );
 }

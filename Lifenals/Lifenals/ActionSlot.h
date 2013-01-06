@@ -9,11 +9,15 @@
 #ifndef Lifenals_ActionSlot_h
 #define Lifenals_ActionSlot_h
 
+class SpriteLife;
 
 class ActionSlot
 {
 public:
-    //TODO
+    //TODO 
+    
+protected:
+    //TODO 
 };
 
 

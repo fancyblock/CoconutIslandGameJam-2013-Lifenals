@@ -12,22 +12,40 @@
 #include "cocos2d.h"
 #include "GameSettings.h"
 #include "SpriteLife.h"
+#include "Nutrient.h"
+#include "Incubator.h"
 
 USING_NS_CC;
 
-class GridSpace
+
+// grid info
+struct gridInfo
+{
+    SpriteLife* _life;
+    Nutrient* _nutrient;
+};
+
+
+class GridSpace : public Incubator
 {
 public:
     GridSpace();
     ~GridSpace();
     
-    void Create();
-    bool AddLife( SpriteLife* life, int posX, int posY );
-    void Update( float elapsed );
-    void SetDisplayLayer( CCNode* layer );
+    void Create( CCNode* layer );
+    virtual bool AddLife( SpriteLife* life, int posX, int posY );
+    virtual bool RemoveLife( SpriteLife* life );
+    virtual bool RemoveLife( int posX, int posY );
+    virtual SpriteLife* GetLife( int posX, int posY );
+    virtual void Update( float elapsed );
     
 protected:
     CCNode* m_displayLayer;
+    gridInfo** m_grids;
+    
+protected:
+    gridInfo* getGridInfo( int x, int y );
+    bool removeLife( SpriteLife* life );
 };
 
 

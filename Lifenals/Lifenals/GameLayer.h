@@ -10,6 +10,8 @@
 #define Lifenals_GameLayer_h
 
 #include "cocos2d.h"
+#include "GridSpace.h"
+#include "SpriteLife.h"
 
 USING_NS_CC;
 
@@ -22,8 +24,17 @@ public:
     
     CREATE_FUNC( GameLayer );
     
+    virtual void onEnter();
+    virtual void onExit();
+    virtual void onEnterTransitionDidFinish();
+    void update( float dt );
+    
 protected:
-    //TODO 
+    GridSpace* m_incubator;
+    CCSprite* m_gameStuffLayer;
+    
+protected:
+    void initGame();
 };
 
 #endif

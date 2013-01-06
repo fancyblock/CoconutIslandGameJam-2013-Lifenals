@@ -10,12 +10,25 @@
 #define Lifenals_SpriteLife_h
 
 #include "ActionSlot.h"
+#include "Incubator.h"
 
 
 class SpriteLife
 {
 public:
-    //TODO
+    SpriteLife();
+    ~SpriteLife();
+    void SetPosition( int x, int y );
+    void GetPosition( int& x, int& y );
+    void SetContainer( Incubator* container );
+    Incubator* GetContainer();
+    
+protected:
+    Incubator* m_container;
+    ActionSlot m_actionSlot;
+    
+    int m_x;
+    int m_y;
 };
 
 

@@ -13,7 +13,9 @@
 class Nutrient
 {
 public:
-    //TODO 
+    Nutrient();
+    ~Nutrient();
+    virtual void Update( float dt );
 };
 
 

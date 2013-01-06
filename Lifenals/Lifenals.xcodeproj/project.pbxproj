@@ -199,7 +199,7 @@
 		CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */; };
 		CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96A816981A0700F7F7D1 /* ActionSlot.cpp */; };
 		CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */; };
-		CFCE96B116982FFA00F7F7D1 /* TestLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */; };
+		CFCE96BD1699225F00F7F7D1 /* Incubator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96BC1699225E00F7F7D1 /* Incubator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -615,8 +615,8 @@
 		CFCE96AB16981D1C00F7F7D1 /* Nutrient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nutrient.h; sourceTree = "<group>"; };
 		CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nutrient.cpp; sourceTree = "<group>"; };
 		CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSettings.h; sourceTree = "<group>"; };
-		CFCE96AF16982FEF00F7F7D1 /* TestLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestLayer.h; sourceTree = "<group>"; };
-		CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestLayer.cpp; sourceTree = "<group>"; };
+		CFCE96BB1699225300F7F7D1 /* Incubator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Incubator.h; sourceTree = "<group>"; };
+		CFCE96BC1699225E00F7F7D1 /* Incubator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Incubator.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1444,8 +1444,6 @@
 				CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */,
 				CFCE969D1697E0A600F7F7D1 /* GameLayer.h */,
 				CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */,
-				CFCE96AF16982FEF00F7F7D1 /* TestLayer.h */,
-				CFCE96B016982FFA00F7F7D1 /* TestLayer.cpp */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -1463,6 +1461,8 @@
 				CFCE96AB16981D1C00F7F7D1 /* Nutrient.h */,
 				CFCE96AC16981D2700F7F7D1 /* Nutrient.cpp */,
 				CFCE96AE16981EDE00F7F7D1 /* GameSettings.h */,
+				CFCE96BB1699225300F7F7D1 /* Incubator.h */,
+				CFCE96BC1699225E00F7F7D1 /* Incubator.cpp */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1718,7 +1718,7 @@
 				CFCE96A61698148D00F7F7D1 /* SpriteLife.cpp in Sources */,
 				CFCE96A916981A0800F7F7D1 /* ActionSlot.cpp in Sources */,
 				CFCE96AD16981D2800F7F7D1 /* Nutrient.cpp in Sources */,
-				CFCE96B116982FFA00F7F7D1 /* TestLayer.cpp in Sources */,
+				CFCE96BD1699225F00F7F7D1 /* Incubator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
