@@ -27,6 +27,8 @@ enum
     eGeneCount
 };
 
+extern const char* g_geneName[];
+
 
 class ActionGene
 {

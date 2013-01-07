@@ -68,6 +68,7 @@ void MenuLayer::onStartGame( CCObject* sender )
     CCDirector::sharedDirector()->replaceScene( CCTransitionFade::create( SCENE_TRANS_TIME, GameLayer::scene() ) );
 }
 
+
 void MenuLayer::onHelp( CCObject* sender )
 {
     //TODO

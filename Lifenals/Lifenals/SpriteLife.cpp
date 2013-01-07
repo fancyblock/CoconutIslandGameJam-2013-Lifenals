@@ -117,7 +117,11 @@ void SpriteLife::onActive()
 
 void SpriteLife::onSlotChanged()
 {
-    //TODO 
+    m_displayLayer->removeChild( m_lifeDisplay->GetDisplay(), false );
+    delete m_lifeDisplay;
+    
+    this->initDisplay();
+    m_lifeDisplay->Appear();
 }
 
 

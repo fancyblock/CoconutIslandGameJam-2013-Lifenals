@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "GridSpace.h"
 #include "SpriteLife.h"
+#include "SelectMedium.h"
 
 USING_NS_CC;
 
@@ -35,12 +36,29 @@ public:
     void onSetting( CCObject* sender );
     void onBattle( CCObject* sender );
     
+    void EnableTouch( bool enable );
+    
+    void onSelectGermDone();
+    
+    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
+    virtual void ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent);
+    
 protected:
     GridSpace* m_incubator;
     CCSprite* m_gameStuffLayer;
     
+    SelectMedium* m_uiSelectMedium;
+    CCMenu* m_menu;
+    
+    int m_selectedGerm;
+    CCSprite* m_sprGermInfo;
+    
 protected:
     void initGame();
+    void refreshUI();
+    
 };
 
 #endif

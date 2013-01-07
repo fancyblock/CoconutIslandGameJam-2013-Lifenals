@@ -11,6 +11,9 @@
 #include "Common.h"
 #include "ActionSlot.h"
 #include "ActionGene.h"
+#include <cstdio>
+
+using namespace std;
 
 #define GRID_SPACE_X    276
 #define GRID_SPACE_Y    105
@@ -41,6 +44,11 @@ bool GameLayer::init()
     {
         return false;
     }
+    
+    // var initial
+    m_selectedGerm = -1;
+    m_sprGermInfo = NULL;
+    //TODO
     
     CCSpriteBatchNode* batchNode = CCSpriteBatchNode::create( "rawData.png" );
     this->addChild( batchNode );
@@ -99,18 +107,17 @@ bool GameLayer::init()
     btnSetting->setScaleY( SGLOBAL.GetSizeFactorY() );
     btnSetting->setPosition( POS( 112, 277 ) );
     //
-    btnNormal = CCSprite::createWithSpriteFrameName( "button_setting_1.png" );
-    btnPush = CCSprite::createWithSpriteFrameName( "button_setting_2.png" );
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_battle_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_battle_2.png" );
     CCMenuItemSprite* btnBattle = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onBattle) );
     btnBattle->setScaleX( SGLOBAL.GetSizeFactorX() );
     btnBattle->setScaleY( SGLOBAL.GetSizeFactorY() );
     btnBattle->setPosition( POS( 112, 107 ) );
     
     
-    CCMenu* menu = CCMenu::create( btnGerm, btnMedium, btnRecord, btnSetting, btnBattle, NULL );
-    menu->setPosition( ccp(0,0) );
-    this->addChild( menu );
-    
+    m_menu = CCMenu::create( btnGerm, btnMedium, btnRecord, btnSetting, btnBattle, NULL );
+    m_menu->setPosition( ccp(0,0) );
+    this->addChild( m_menu );
     
     initGame();
     
@@ -128,18 +135,20 @@ void GameLayer::initGame()
     m_incubator = new GridSpace();
     m_incubator->Create( m_gameStuffLayer );
     
-    // add a life into incubator
+    // add initial life into incubator
     SpriteLife* life = new SpriteLife();
-    life->GetActionSlot()->AddGene( eGeneCopy );        //[HACK]
-    m_incubator->AddLife( life, 2, 2 );                 //[HACK]
+    life->GetActionSlot()->AddGene( eGeneCopy );
+    m_incubator->AddLife( life, 2, 2 );                 //[TEMP]
     
     this->addChild( m_gameStuffLayer );
+    
+    EnableTouch( true );
 }
 
 
 void GameLayer::onEnter()
 {
-    CCLayer::onEnter();
+    CCLayerColor::onEnter();
     
     CCLog( "[GameLayer]: Enter" );
     
@@ -155,13 +164,13 @@ void GameLayer::onExit()
     
     this->unscheduleUpdate();
     
-    CCLayer::onExit();
+    CCLayerColor::onExit();
 }
 
 
 void GameLayer::onEnterTransitionDidFinish()
 {
-    CCLayer::onEnterTransitionDidFinish();
+    CCLayerColor::onEnterTransitionDidFinish();
     
     CCLog( "[GameLayer]: EnterTransitionDidFinish" );
     
@@ -179,7 +188,18 @@ void GameLayer::onGerms( CCObject* sender )
 
 void GameLayer::onMedium( CCObject* sender )
 {
-    //TODO
+    EnableTouch( false );
+    
+    // add medium into grid
+    if( m_uiSelectMedium == NULL )
+    {
+        m_uiSelectMedium = new SelectMedium();
+        m_uiSelectMedium->init();
+        
+        m_uiSelectMedium->SetMainLayer( this );
+    }
+    
+    this->getParent()->addChild( m_uiSelectMedium );
 }
 
 
@@ -201,6 +221,24 @@ void GameLayer::onBattle( CCObject* sender )
 }
 
 
+void GameLayer::EnableTouch( bool enable )
+{
+    this->setTouchEnabled( enable );
+    this->m_menu->setTouchEnabled( enable );
+}
+
+
+void GameLayer::onSelectGermDone()
+{
+    EnableTouch( true );
+    this->getParent()->removeChild( m_uiSelectMedium, false );
+    
+    m_selectedGerm = m_uiSelectMedium->GetSelectedGene();
+    
+    refreshUI();
+}
+
+
 void GameLayer::update( float dt )
 {    
     //TODO
@@ -208,4 +246,65 @@ void GameLayer::update( float dt )
     m_incubator->Update( dt );
 }
 
+
+void GameLayer::refreshUI()
+{
+    // selected germ
+    if( m_sprGermInfo != NULL )
+    {
+        this->removeChild( m_sprGermInfo, true );
+        m_sprGermInfo = NULL;
+    }
+    if( m_selectedGerm >= 0 )
+    {
+        m_sprGermInfo = CCSprite::create();
+        
+        char buff[20];
+        if( (m_selectedGerm+1) != 10 )
+            sprintf( buff, "M0%d_1.png", m_selectedGerm+1 );
+        else
+            sprintf( buff, "M%d_1.png", m_selectedGerm+1 );
+        CCSprite* imgLogo = CCSprite::createWithSpriteFrameName( buff );
+        
+        m_sprGermInfo->addChild( imgLogo );
+        CCLabelTTF* font = CCLabelTTF::create( g_geneName[m_selectedGerm], "arial.ttf", 14 );
+        font->setPosition( POS( 0, -70 ) );
+        m_sprGermInfo->addChild( font );
+        
+        m_sprGermInfo->setPosition( POS( 930, 530 ) );
+        m_sprGermInfo->setScaleX( SGLOBAL.GetSizeFactorX() );
+        m_sprGermInfo->setScaleY( SGLOBAL.GetSizeFactorY() );
+        this->addChild( m_sprGermInfo );
+    }
+    
+    //TODO 
+}
+
+
+void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+{
+    CCTouch* pTouch = (CCTouch*)pTouches->anyObject();
+    CCPoint pt = pTouch->getLocationInView();
+    CCLog( "[Pos]: %.2f, %.2f", pt.x, pt.y );
+    
+    //TODO
+}
+
+
+void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
+{
+    //TODO
+}
+
+
+void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+{
+    //TODO
+}
+
+
+void GameLayer::ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent)
+{
+    //TODO 
+}
 

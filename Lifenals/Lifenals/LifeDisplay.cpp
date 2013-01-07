@@ -29,7 +29,7 @@ LifeDisplay::LifeDisplay()
 
 LifeDisplay::~LifeDisplay()
 {
-    //TODO
+    delete m_display;
 }
 
 

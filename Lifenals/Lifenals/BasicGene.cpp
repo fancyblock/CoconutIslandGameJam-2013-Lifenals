@@ -8,6 +8,19 @@
 
 #include "BasicGene.h"
 
+const char* g_geneName[]=
+{
+    "GeneCopy",
+    "GeneMove",
+    "GeneJump",
+    "GeneAssimilation",
+    "GeneDestroy",
+    "GeneDestroyOther",
+    "GeneDisable",
+    "GeneRape",
+    "",
+    ""
+};
 
 
 BasicGene::BasicGene()

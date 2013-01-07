@@ -205,6 +205,8 @@
 		CFCE96CE169A6D5C00F7F7D1 /* GeneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96CD169A6D5C00F7F7D1 /* GeneManager.cpp */; };
 		CFCE96D1169A81A900F7F7D1 /* GeneMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */; };
 		CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */; };
+		CFCE96D8169AB76300F7F7D1 /* SelectMedium.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D7169AB76300F7F7D1 /* SelectMedium.cpp */; };
+		CFCE96DA169AD46F00F7F7D1 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFCE96D9169AD46E00F7F7D1 /* arial.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -634,6 +636,9 @@
 		CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneMove.cpp; sourceTree = "<group>"; };
 		CFCE96D3169A8A6B00F7F7D1 /* GeneDestroy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneDestroy.h; sourceTree = "<group>"; };
 		CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneDestroy.cpp; sourceTree = "<group>"; };
+		CFCE96D6169AB75600F7F7D1 /* SelectMedium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectMedium.h; sourceTree = "<group>"; };
+		CFCE96D7169AB76300F7F7D1 /* SelectMedium.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectMedium.cpp; sourceTree = "<group>"; };
+		CFCE96D9169AD46E00F7F7D1 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arial.ttf; path = Resources/arial.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +709,7 @@
 		CFCE94231697265300F7F7D1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFCE96D9169AD46E00F7F7D1 /* arial.ttf */,
 				CFCE96991697DB7200F7F7D1 /* rawData.plist */,
 				CFCE969A1697DB7200F7F7D1 /* rawData.png */,
 				CFCE968B1697267E00F7F7D1 /* Default-568h@2x.png */,
@@ -1461,6 +1467,8 @@
 				CFCE96971697D6BE00F7F7D1 /* MenuLayer.cpp */,
 				CFCE969D1697E0A600F7F7D1 /* GameLayer.h */,
 				CFCE969E1697E0B000F7F7D1 /* GameLayer.cpp */,
+				CFCE96D6169AB75600F7F7D1 /* SelectMedium.h */,
+				CFCE96D7169AB76300F7F7D1 /* SelectMedium.cpp */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -1574,6 +1582,7 @@
 				CFCE968C1697267E00F7F7D1 /* Default-568h@2x.png in Resources */,
 				CFCE969B1697DB7200F7F7D1 /* rawData.plist in Resources */,
 				CFCE969C1697DB7200F7F7D1 /* rawData.png in Resources */,
+				CFCE96DA169AD46F00F7F7D1 /* arial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,6 +1770,7 @@
 				CFCE96CE169A6D5C00F7F7D1 /* GeneManager.cpp in Sources */,
 				CFCE96D1169A81A900F7F7D1 /* GeneMove.cpp in Sources */,
 				CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */,
+				CFCE96D8169AB76300F7F7D1 /* SelectMedium.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
