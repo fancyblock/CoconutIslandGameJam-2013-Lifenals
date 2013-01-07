@@ -13,7 +13,7 @@
 
 
 // menu layer
-class MenuLayer : public cocos2d::CCLayer
+class MenuLayer : public cocos2d::CCLayerColor
 {
 public:
     virtual bool init();

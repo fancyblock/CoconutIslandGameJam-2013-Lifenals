@@ -35,7 +35,7 @@ bool MenuLayer::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !CCLayer::init() )
+    if ( !CCLayerColor::initWithColor( ccc4(75,134,104,255) ) )
     {
         return false;
     }
@@ -44,15 +44,18 @@ bool MenuLayer::init()
     //TODO 
     
     // create menu
-    CCMenuItemFont* btnStartGame = CCMenuItemFont::create( "Start Game", this, menu_selector(MenuLayer::onStartGame));
-    btnStartGame->setPosition( POS(SCREEN_WIDTH/2, 320) );
-    CCMenuItemFont* btnHelp = CCMenuItemFont::create( "Help", this, menu_selector(MenuLayer::onHelp));
-    btnHelp->setPosition( POS(SCREEN_WIDTH/2, 240) );
-    CCMenuItemFont* btnAbout = CCMenuItemFont::create( "About", this, menu_selector(MenuLayer::onAbout));
-    btnAbout->setPosition( POS(SCREEN_WIDTH/2, 160) );
+    CCSprite* btnNormal = NULL;
+    CCSprite* btnPush = NULL;
     
-    CCMenu* menu = CCMenu::create( btnStartGame, btnHelp, btnAbout, NULL );
-
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_start_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_start_2.png" );
+    CCMenuItemSprite* btnStart = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(MenuLayer::onStartGame) );
+    btnStart->setPosition( POS(SCREEN_WIDTH/2, SCREEN_HEIGHT/3) );
+    btnStart->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnStart->setScaleY( SGLOBAL.GetSizeFactorY() );
+    
+    CCMenu* menu = CCMenu::create( btnStart, NULL );
+    
     menu->setPosition( 0, 0 );
     this->addChild( menu, 0 );
     
