@@ -11,6 +11,7 @@
 #include "ActionGene.h"
 #include "Common.h"
 #include "GlobalWork.h"
+#include "GeneManager.h"
 
 
 USING_NS_CC;
@@ -65,14 +66,16 @@ void SpriteLife::onAdd()
     // add to parent and then play some appear animation
     this->initDisplay();
     
-    //TODO
+    m_lifeDisplay->Appear();
     
+    //TODO 
 }
 
 
 void SpriteLife::onRemove()
 {
     // play some animation and then remove from parent
+    m_lifeDisplay->Disappear();
     
     //TODO 
 }
@@ -80,7 +83,7 @@ void SpriteLife::onRemove()
 
 void SpriteLife::onMove()
 {
-    //TODO 
+    m_lifeDisplay->MoveTo( m_x, m_y );
 }
 
 
@@ -106,9 +109,15 @@ void SpriteLife::onActive()
         m_curActionIdx++;
         m_curActionIdx %= geneCnt;
         
-        ActionGene* actionGene = m_actionSlot.GetActionGene( m_curActionIdx );
-        actionGene->Start( this );
+        int gene = m_actionSlot.GetActionGene( m_curActionIdx );
+        GeneManager::sharedInstance()->GetGene( gene )->Start( this );
     }
+}
+
+
+void SpriteLife::onSlotChanged()
+{
+    //TODO 
 }
 
 
@@ -133,6 +142,12 @@ void SpriteLife::SetDisplayLayer( CCNode* layer )
 ActionSlot* SpriteLife::GetActionSlot()
 {
     return &m_actionSlot;
+}
+
+
+LifeDisplay* SpriteLife::GetLifeDisplay()
+{
+    return m_lifeDisplay;
 }
 
 

@@ -19,10 +19,13 @@ public:
     ActionSlot();
     ~ActionSlot();
     int GetGeneCount();
-    ActionGene* GetActionGene( int index );
+    int GetActionGene( int index );
+    bool AddGene( int geneType );
+    void CleanAllGene();
+    void CloneFrom( ActionSlot* actionSlot );
     
 protected:
-    ActionGene* m_actionGenes[MAX_SLOT_CAPACITY];
+    int m_actionGenes[MAX_SLOT_CAPACITY];
     int m_geneCount;
 };
 

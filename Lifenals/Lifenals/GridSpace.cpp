@@ -7,6 +7,13 @@
 //
 
 #include "GridSpace.h"
+#include <cstdlib>
+
+using namespace std;
+
+
+static int g_offsetX[] = { 1, 0, -1, 0 };
+static int g_offsetY[] = { 0, 1, 0, -1 };
 
 
 GridSpace::GridSpace()
@@ -113,9 +120,13 @@ void GridSpace::Update( float elapsed )
     
     int lifeCnt = m_lives->count();
     
-    // activite the life 
-    int curActiveLife = getCurActiveLife();
-    if( curActiveLife < 0 && lifeCnt > 0 )         // need to set a new one
+    // activite the life
+    // ------------------------------------------------------------------------------------------------
+    /**
+     * @ limit this part to control the game speed 
+     */
+    int curActiveLife = getCurActiveLife();         // the index of the current active life ( >= 0 )
+    if( curActiveLife < 0 && lifeCnt > 0 )          // need to set a new one
     {
         m_curActiveLife++;
         m_curActiveLife %= lifeCnt;
@@ -124,6 +135,7 @@ void GridSpace::Update( float elapsed )
         life->SetStatus( eActive );
         life->onActive();
     }
+    // ------------------------------------------------------------------------------------------------
     
     // update the life
     for( i = 0; i < lifeCnt; i++ )
@@ -172,6 +184,62 @@ void GridSpace::Update( float elapsed )
 void GridSpace::RemoveAllLives()
 {
     //TODO 
+}
+
+
+void GridSpace::GetRandomBlankNeighbor( SpriteLife* life, int& x, int& y )
+{
+    int selfX, selfY;
+    int neighborCnt = 0;
+    
+    life->GetPosition( selfX, selfY );
+    
+    // get all the blank neighbor
+    int gridX[4];
+    int gridY[4];
+    for( int i(0); i < 4; i++ )
+    {
+        gridInfo* grid = getGridInfo( selfX + g_offsetX[i], selfY + g_offsetY[i] );
+        
+        if( grid != NULL && grid->_life == NULL )
+        {
+            gridX[neighborCnt] = selfX + g_offsetX[i];
+            gridY[neighborCnt] = selfY + g_offsetY[i];
+            
+            neighborCnt++;
+        }
+    }
+    
+    // choose a random result
+    if( neighborCnt > 0 )
+    {
+        int idx = rand() % neighborCnt;
+        
+        x = gridX[idx];
+        y = gridY[idx];
+    }
+    else
+    {
+        x = -1;
+        y = -1;
+    }
+}
+
+
+void GridSpace::MoveLife( SpriteLife* life, int x, int y )
+{
+    int orgX, orgY;
+    
+    life->GetPosition( orgX, orgY );
+    
+    gridInfo* grid = getGridInfo( orgX, orgY );
+    grid->_life = NULL;
+    
+    grid = getGridInfo( x, y );
+    grid->_life = life;
+    life->SetPosition( x, y );
+    
+    life->onMove();
 }
 
 
@@ -224,6 +292,8 @@ int GridSpace::getCurActiveLife()
         if( life->GetStatus() == eActive )
         {
             idx = i;
+            m_curActiveLife = idx;
+            
             break;
         }
     }

@@ -9,6 +9,8 @@
 #include "GameLayer.h"
 #include "GlobalWork.h"
 #include "Common.h"
+#include "ActionSlot.h"
+#include "ActionGene.h"
 
 #define GRID_SPACE_X    276
 #define GRID_SPACE_Y    105
@@ -68,7 +70,8 @@ void GameLayer::initGame()
     
     // add a life into incubator
     SpriteLife* life = new SpriteLife();
-    m_incubator->AddLife( life, 2, 2 );     //[HACK]
+    life->GetActionSlot()->AddGene( eGeneMove );        //[HACK]
+    m_incubator->AddLife( life, 2, 2 );                 //[HACK]
     
     this->addChild( m_gameStuffLayer );
 }

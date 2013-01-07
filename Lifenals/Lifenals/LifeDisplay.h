@@ -24,6 +24,9 @@ public:
     CCSprite* GetDisplay();
     
     void Flicker();                     // play an animation when this life's turn but it doesn't have any action
+    void Appear();
+    void Disappear();
+    void MoveTo( int x, int y );
     
 protected:
     SpriteLife* m_host;

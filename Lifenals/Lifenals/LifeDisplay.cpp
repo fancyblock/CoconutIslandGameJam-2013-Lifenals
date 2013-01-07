@@ -8,6 +8,9 @@
 
 #include "LifeDisplay.h"
 #include "SpriteLife.h"
+#include "GameSettings.h"
+#include "Common.h"
+#include "GlobalWork.h"
 
 
 LifeDisplay::LifeDisplay()
@@ -30,6 +33,7 @@ void LifeDisplay::Create( SpriteLife* life )
     char* frameName = getLifeLookFileName();
     m_display = CCSprite::createWithSpriteFrameName( frameName );
     m_display->setPosition( ccp( 0, 0 ) );
+    m_display->setOpacity( 0 );
 }
 
 
@@ -41,10 +45,34 @@ CCSprite* LifeDisplay::GetDisplay()
 
 void LifeDisplay::Flicker()
 {
-    m_display->runAction( CCSequence::create( CCScaleTo::create( 0.7f, 1.0f, 1.2f ),
+    m_display->runAction( CCSequence::create(
+                            CCScaleTo::create( 0.7f, 1.0f, 1.2f ),
                             CCScaleTo::create( 0.7f, 1.0f, 1.0f ),
                             CCDelayTime::create( 0.5f ),
-                            CCCallFunc::create( this, callfunc_selector(LifeDisplay::onDeactive) ), NULL ) );
+                            CCCallFunc::create( this, callfunc_selector(LifeDisplay::onDeactive) )
+                                             , NULL ) );
+}
+
+
+void LifeDisplay::Appear()
+{
+    m_display->runAction( CCFadeIn::create( 1.0f ) );
+}
+
+
+void LifeDisplay::Disappear()
+{
+    //TODO 
+}
+
+
+void LifeDisplay::MoveTo( int x, int y )
+{
+    m_display->runAction( CCSequence::create(
+                            CCJumpTo::create( 1.0f, POS( x*SPRITE_WID, y*SPRITE_HEI), 1.0f, 1 ),
+                            CCDelayTime::create( 0.5f ),
+                            CCCallFunc::create( this, callfunc_selector(LifeDisplay::onDeactive) )
+                                             , NULL ) );
 }
 
 
@@ -55,7 +83,7 @@ char* LifeDisplay::getLifeLookFileName()
     ActionSlot* slot = m_host->GetActionSlot();
     if( slot->GetGeneCount() > 0 )
     {
-        ActionGene* gene = slot->GetActionGene( 0 );
+        int gene = slot->GetActionGene( 0 );
         
         //TODO 
     }

@@ -16,8 +16,8 @@
 #define ARENA_WID       6
 #define ARENA_HEI       6
 
-#define SPRITE_WID      84
-#define SPRITE_HEI      84
+#define SPRITE_WID      85
+#define SPRITE_HEI      85
 
 
 #define MAX_SLOT_CAPACITY    5

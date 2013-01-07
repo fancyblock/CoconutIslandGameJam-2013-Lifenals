@@ -15,12 +15,6 @@ USING_NS_CC;
 ActionSlot::ActionSlot()
 {
     m_geneCount = 0;
-    
-    // initial the array
-    for( int i(0); i < MAX_SLOT_CAPACITY; i++ )
-    {
-        m_actionGenes[i] = NULL;
-    }
 }
 
 
@@ -36,7 +30,7 @@ int ActionSlot::GetGeneCount()
 }
 
 
-ActionGene* ActionSlot::GetActionGene( int index )
+int ActionSlot::GetActionGene( int index )
 {
     if( index < 0 || index >= MAX_SLOT_CAPACITY )
     {
@@ -44,6 +38,36 @@ ActionGene* ActionSlot::GetActionGene( int index )
     }
     
     return m_actionGenes[index];
+}
+
+
+bool ActionSlot::AddGene( int geneType )
+{
+    if( m_geneCount >= MAX_SLOT_CAPACITY )
+    {
+        return false;
+    }
+    
+    m_actionGenes[m_geneCount++] = geneType;
+    
+    return true;
+}
+
+
+void ActionSlot::CleanAllGene()
+{    
+    m_geneCount = 0;
+}
+
+
+void ActionSlot::CloneFrom( ActionSlot* actionSlot )
+{
+    m_geneCount = actionSlot->m_geneCount;
+    
+    for( int i(0); i < MAX_SLOT_CAPACITY; i++ )
+    {
+        m_actionGenes[i] = actionSlot->m_actionGenes[i];
+    }
 }
 
 

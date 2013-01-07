@@ -40,12 +40,14 @@ public:
     void SetStatus( int status );
     void SetDisplayLayer( CCNode* layer );
     ActionSlot* GetActionSlot();
+    LifeDisplay* GetLifeDisplay();
     
     void onAdd();
     void onRemove();
     void onMove();
     void onUpdate( float dt );
     void onActive();
+    void onSlotChanged();
     
 protected:
     Incubator* m_container;

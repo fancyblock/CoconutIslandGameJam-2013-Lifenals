@@ -11,6 +11,24 @@
 
 class SpriteLife;
 
+
+// all the actions
+enum
+{
+    eGeneNone = 0,
+    eGeneCopy,
+    eGeneMove,
+    eGeneJump,
+    eGeneAssimilation,
+    eGeneDestroy,
+    eGeneDestroyOther,
+    eGeneDisable,
+    eGeneRape,
+    //TODO
+    eGeneCount
+};
+
+
 class ActionGene
 {
 public:
