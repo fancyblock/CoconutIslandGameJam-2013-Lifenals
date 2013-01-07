@@ -16,7 +16,7 @@
 USING_NS_CC;
 
 
-class GameLayer : public CCLayer
+class GameLayer : public CCLayerColor
 {
 public:
     virtual bool init();
@@ -28,6 +28,12 @@ public:
     virtual void onExit();
     virtual void onEnterTransitionDidFinish();
     void update( float dt );
+    
+    void onGerms( CCObject* sender );
+    void onMedium( CCObject* sender );
+    void onRecord( CCObject* sender );
+    void onSetting( CCObject* sender );
+    void onBattle( CCObject* sender );
     
 protected:
     GridSpace* m_incubator;

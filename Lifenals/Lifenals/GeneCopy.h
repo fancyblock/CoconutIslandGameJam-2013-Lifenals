@@ -18,9 +18,6 @@ public:
     ~GeneCopy();
     
     virtual void Start( SpriteLife* life );
-    
-protected:
-    //TODO 
 };
 
 

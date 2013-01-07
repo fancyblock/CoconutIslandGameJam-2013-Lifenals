@@ -9,6 +9,9 @@
 #ifndef Lifenals_ActionSlot_h
 #define Lifenals_ActionSlot_h
 #include "GameSettings.h"
+#include <vector>
+
+using namespace std;
 
 class SpriteLife;
 class ActionGene;
@@ -21,12 +24,12 @@ public:
     int GetGeneCount();
     int GetActionGene( int index );
     bool AddGene( int geneType );
+    void RemoveGene( int geneType );
     void CleanAllGene();
     void CloneFrom( ActionSlot* actionSlot );
     
 protected:
-    int m_actionGenes[MAX_SLOT_CAPACITY];
-    int m_geneCount;
+    vector<int> m_actionGenes;
 };
 
 

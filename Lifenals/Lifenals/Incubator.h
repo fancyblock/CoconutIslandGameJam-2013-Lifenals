@@ -26,6 +26,7 @@ public:
     virtual void RemoveAllLives() = 0;
     virtual void GetRandomBlankNeighbor( SpriteLife* life, int& x, int& y ) = 0;
     virtual void MoveLife( SpriteLife* life, int x, int y ) = 0;
+    virtual void GetRandomNeighbor( SpriteLife* life, int& x, int& y ) = 0;
 
 };
 

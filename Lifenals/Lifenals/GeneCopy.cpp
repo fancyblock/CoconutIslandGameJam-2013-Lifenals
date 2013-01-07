@@ -40,9 +40,13 @@ void GeneCopy::Start( SpriteLife* life )
     // copy self to that grid 
     else
     {
+        // eGeneCopy <- this can only be use once
+        life->GetActionSlot()->RemoveGene( eGeneCopy );
+        
         SpriteLife* cloneLife = new SpriteLife();
         cloneLife->GetActionSlot()->CloneFrom( life->GetActionSlot() );
         life->GetContainer()->AddLife( cloneLife, x, y );
+        life->onSlotChanged();
         
         life->GetLifeDisplay()->Flicker();
         

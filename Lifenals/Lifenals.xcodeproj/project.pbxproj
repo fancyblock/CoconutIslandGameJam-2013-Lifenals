@@ -204,6 +204,7 @@
 		CFCE96CB169A500500F7F7D1 /* GeneCopy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96CA169A500500F7F7D1 /* GeneCopy.cpp */; };
 		CFCE96CE169A6D5C00F7F7D1 /* GeneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96CD169A6D5C00F7F7D1 /* GeneManager.cpp */; };
 		CFCE96D1169A81A900F7F7D1 /* GeneMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */; };
+		CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -631,6 +632,8 @@
 		CFCE96CD169A6D5C00F7F7D1 /* GeneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneManager.cpp; sourceTree = "<group>"; };
 		CFCE96CF169A819E00F7F7D1 /* GeneMove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneMove.h; sourceTree = "<group>"; };
 		CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneMove.cpp; sourceTree = "<group>"; };
+		CFCE96D3169A8A6B00F7F7D1 /* GeneDestroy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneDestroy.h; sourceTree = "<group>"; };
+		CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneDestroy.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1491,6 +1494,8 @@
 				CFCE96CD169A6D5C00F7F7D1 /* GeneManager.cpp */,
 				CFCE96CF169A819E00F7F7D1 /* GeneMove.h */,
 				CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */,
+				CFCE96D3169A8A6B00F7F7D1 /* GeneDestroy.h */,
+				CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */,
 			);
 			name = Gene;
 			sourceTree = "<group>";
@@ -1755,6 +1760,7 @@
 				CFCE96CB169A500500F7F7D1 /* GeneCopy.cpp in Sources */,
 				CFCE96CE169A6D5C00F7F7D1 /* GeneManager.cpp in Sources */,
 				CFCE96D1169A81A900F7F7D1 /* GeneMove.cpp in Sources */,
+				CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

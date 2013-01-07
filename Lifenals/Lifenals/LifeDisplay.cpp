@@ -11,6 +11,13 @@
 #include "GameSettings.h"
 #include "Common.h"
 #include "GlobalWork.h"
+#include "ActionGene.h"
+
+
+static char* g_lifePic[] = { "germ_001.png", "germ_002.png", "germ_003.png",
+                            "germ_004.png", "germ_005.png", "germ_006.png",
+                            "germ_007.png", "germ_008.png", "germ_009.png",
+                            "germ_010.png" };
 
 
 LifeDisplay::LifeDisplay()
@@ -84,8 +91,7 @@ char* LifeDisplay::getLifeLookFileName()
     if( slot->GetGeneCount() > 0 )
     {
         int gene = slot->GetActionGene( 0 );
-        
-        //TODO 
+        fileName = g_lifePic[gene];
     }
     
     return fileName;

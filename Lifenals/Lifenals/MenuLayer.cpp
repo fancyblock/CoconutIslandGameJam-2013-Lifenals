@@ -48,12 +48,10 @@ bool MenuLayer::init()
     btnStartGame->setPosition( POS(SCREEN_WIDTH/2, 320) );
     CCMenuItemFont* btnHelp = CCMenuItemFont::create( "Help", this, menu_selector(MenuLayer::onHelp));
     btnHelp->setPosition( POS(SCREEN_WIDTH/2, 240) );
-    CCMenuItemFont* btnSettings = CCMenuItemFont::create( "Settings", this, menu_selector(MenuLayer::onSettings));
-    btnSettings->setPosition( POS(SCREEN_WIDTH/2, 160) );
     CCMenuItemFont* btnAbout = CCMenuItemFont::create( "About", this, menu_selector(MenuLayer::onAbout));
-    btnAbout->setPosition( POS(SCREEN_WIDTH/2, 80) );
+    btnAbout->setPosition( POS(SCREEN_WIDTH/2, 160) );
     
-    CCMenu* menu = CCMenu::create( btnStartGame, btnHelp, btnSettings, btnAbout, NULL );
+    CCMenu* menu = CCMenu::create( btnStartGame, btnHelp, btnAbout, NULL );
 
     menu->setPosition( 0, 0 );
     this->addChild( menu, 0 );
@@ -74,12 +72,6 @@ void MenuLayer::onHelp( CCObject* sender )
     CCLog( "[Help]" );
 }
 
-void MenuLayer::onSettings( CCObject* sender )
-{
-    //TODO
-    
-    CCLog( "[Settings]" );
-}
 
 void MenuLayer::onAbout( CCObject* sender )
 {

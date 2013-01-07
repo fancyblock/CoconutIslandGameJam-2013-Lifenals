@@ -41,7 +41,7 @@ void GeneMove::Start( SpriteLife* life )
     {
         life->GetContainer()->MoveLife( life, x, y );
         
-        CCLog( "[GeneCopy]: Life move to [%d, %d]", x, y );
+        CCLog( "[GeneMove]: Life move to [%d, %d]", x, y );
     }
     
 }

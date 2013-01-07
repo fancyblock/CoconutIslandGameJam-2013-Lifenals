@@ -14,25 +14,24 @@ USING_NS_CC;
 
 ActionSlot::ActionSlot()
 {
-    m_geneCount = 0;
 }
 
 
 ActionSlot::~ActionSlot()
 {
-    //TODO 
+    //TODO
 }
 
 
 int ActionSlot::GetGeneCount()
 {
-    return m_geneCount;
+    return m_actionGenes.size();
 }
 
 
 int ActionSlot::GetActionGene( int index )
 {
-    if( index < 0 || index >= MAX_SLOT_CAPACITY )
+    if( index < 0 || index >= m_actionGenes.size() )
     {
         return NULL;
     }
@@ -43,30 +42,45 @@ int ActionSlot::GetActionGene( int index )
 
 bool ActionSlot::AddGene( int geneType )
 {
-    if( m_geneCount >= MAX_SLOT_CAPACITY )
+    if( m_actionGenes.size() >= MAX_SLOT_CAPACITY )
     {
         return false;
     }
     
-    m_actionGenes[m_geneCount++] = geneType;
+    m_actionGenes.push_back( geneType );
     
     return true;
 }
 
 
+void ActionSlot::RemoveGene( int geneType )
+{
+    vector<int>::iterator i;
+    
+    for( i = m_actionGenes.begin(); i != m_actionGenes.end(); i++ )
+    {
+        if( *i == geneType )
+        {
+            m_actionGenes.erase( i );
+            break;
+        }
+    }
+}
+
+
 void ActionSlot::CleanAllGene()
 {    
-    m_geneCount = 0;
+    m_actionGenes.clear();
 }
 
 
 void ActionSlot::CloneFrom( ActionSlot* actionSlot )
 {
-    m_geneCount = actionSlot->m_geneCount;
+    m_actionGenes.clear();
     
-    for( int i(0); i < MAX_SLOT_CAPACITY; i++ )
+    for( int i(0); i < actionSlot->m_actionGenes.size(); i++ )
     {
-        m_actionGenes[i] = actionSlot->m_actionGenes[i];
+        m_actionGenes.push_back( actionSlot->m_actionGenes[i] );
     }
 }
 

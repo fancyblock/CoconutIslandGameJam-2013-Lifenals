@@ -41,6 +41,7 @@ public:
     virtual void RemoveAllLives();
     virtual void GetRandomBlankNeighbor( SpriteLife* life, int& x, int& y );
     virtual void MoveLife( SpriteLife* life, int x, int y );
+    virtual void GetRandomNeighbor( SpriteLife* life, int& x, int& y );
     
 protected:
     CCNode* m_displayLayer;

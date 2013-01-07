@@ -15,8 +15,7 @@ class SpriteLife;
 // all the actions
 enum
 {
-    eGeneNone = 0,
-    eGeneCopy,
+    eGeneCopy = 0,
     eGeneMove,
     eGeneJump,
     eGeneAssimilation,

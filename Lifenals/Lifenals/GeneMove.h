@@ -18,9 +18,6 @@ public:
     ~GeneMove();
     
     virtual void Start( SpriteLife* life );
-    
-protected:
-    //TODO
 };
 
 

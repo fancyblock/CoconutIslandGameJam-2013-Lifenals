@@ -10,6 +10,7 @@
 #include "cocos2d.h"
 #include "GeneCopy.h"
 #include "GeneMove.h"
+#include "GeneDestroy.h"
 
 USING_NS_CC;
 
@@ -32,6 +33,7 @@ GeneManager::GeneManager()
 {
     m_genes[eGeneCopy] = new GeneCopy();
     m_genes[eGeneMove] = new GeneMove();
+    m_genes[eGeneDestroy] = new GeneDestroy();
     //TODO 
 }
 

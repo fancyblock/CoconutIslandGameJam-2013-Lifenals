@@ -37,20 +37,80 @@ bool GameLayer::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !CCLayer::init() )
+    if ( !CCLayerColor::initWithColor( ccc4(75,134,104,255) ) )
     {
         return false;
     }
     
+    CCSpriteBatchNode* batchNode = CCSpriteBatchNode::create( "rawData.png" );
+    this->addChild( batchNode );
+    
+    CCSprite* spr = NULL;
+    
     // add background
-    CCSprite* sprBg = CCSprite::createWithSpriteFrameName( "ingameBg.png" );
-    sprBg->setPosition( POS( SCREEN_WIDTH/2, SCREEN_HEIGHT/2 ) );
-    sprBg->setScaleX( SGLOBAL.GetSizeFactorX() );
-    sprBg->setScaleY( SGLOBAL.GetSizeFactorY() );
-    this->addChild( sprBg );
+    spr = CCSprite::createWithSpriteFrameName( "area_01.png" );
+    spr->setPosition( POS( 487, SCREEN_HEIGHT/2 ) );
+    spr->setScaleX( SGLOBAL.GetSizeFactorX() );
+    spr->setScaleY( SGLOBAL.GetSizeFactorY() );
+    batchNode->addChild( spr );
+    //
+    spr = CCSprite::createWithSpriteFrameName( "area_02.png" );
+    spr->setPosition( POS( 942, 101 ) );
+    spr->setScaleX( SGLOBAL.GetSizeFactorX() );
+    spr->setScaleY( SGLOBAL.GetSizeFactorY() );
+    batchNode->addChild( spr );
+    //
+    spr = CCSprite::createWithSpriteFrameName( "frame_ifo.png" );
+    spr->setPosition( POS( 944, 320 ) );
+    spr->setScaleX( SGLOBAL.GetSizeFactorX() );
+    spr->setScaleY( SGLOBAL.GetSizeFactorY() );
+    batchNode->addChild( spr );
+    //
     
     // create menu
-    //TODO
+    CCSprite* btnNormal = NULL;
+    CCSprite* btnPush = NULL;
+    //
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_germ_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_germ_2.png" );
+    CCMenuItemSprite* btnGerm = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onGerms) );
+    btnGerm->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnGerm->setScaleY( SGLOBAL.GetSizeFactorY() );
+    btnGerm->setPosition( POS( 112, 532 ) );
+    //
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_medium_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_medium_2.png" );
+    CCMenuItemSprite* btnMedium = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onMedium) );
+    btnMedium->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnMedium->setScaleY( SGLOBAL.GetSizeFactorY() );
+    btnMedium->setPosition( POS( 112, 447 ) );
+    //
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_record_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_record_2.png" );
+    CCMenuItemSprite* btnRecord = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onRecord) );
+    btnRecord->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnRecord->setScaleY( SGLOBAL.GetSizeFactorY() );
+    btnRecord->setPosition( POS( 112, 362 ) );
+    //
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_setting_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_setting_2.png" );
+    CCMenuItemSprite* btnSetting = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onSetting) );
+    btnSetting->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnSetting->setScaleY( SGLOBAL.GetSizeFactorY() );
+    btnSetting->setPosition( POS( 112, 277 ) );
+    //
+    btnNormal = CCSprite::createWithSpriteFrameName( "button_setting_1.png" );
+    btnPush = CCSprite::createWithSpriteFrameName( "button_setting_2.png" );
+    CCMenuItemSprite* btnBattle = CCMenuItemSprite::create( btnNormal, btnPush, this, menu_selector(GameLayer::onBattle) );
+    btnBattle->setScaleX( SGLOBAL.GetSizeFactorX() );
+    btnBattle->setScaleY( SGLOBAL.GetSizeFactorY() );
+    btnBattle->setPosition( POS( 112, 107 ) );
+    
+    
+    CCMenu* menu = CCMenu::create( btnGerm, btnMedium, btnRecord, btnSetting, btnBattle, NULL );
+    menu->setPosition( ccp(0,0) );
+    this->addChild( menu );
+    
     
     initGame();
     
@@ -70,7 +130,7 @@ void GameLayer::initGame()
     
     // add a life into incubator
     SpriteLife* life = new SpriteLife();
-    life->GetActionSlot()->AddGene( eGeneMove );        //[HACK]
+    life->GetActionSlot()->AddGene( eGeneCopy );        //[HACK]
     m_incubator->AddLife( life, 2, 2 );                 //[HACK]
     
     this->addChild( m_gameStuffLayer );
@@ -108,6 +168,36 @@ void GameLayer::onEnterTransitionDidFinish()
     this->scheduleUpdate();
     
     //TODO
+}
+
+
+void GameLayer::onGerms( CCObject* sender )
+{
+    //TODO
+}
+
+
+void GameLayer::onMedium( CCObject* sender )
+{
+    //TODO
+}
+
+
+void GameLayer::onRecord( CCObject* sender )
+{
+    //TODO
+}
+
+
+void GameLayer::onSetting( CCObject* sender )
+{
+    //TODO
+}
+
+
+void GameLayer::onBattle( CCObject* sender )
+{
+    //TODO 
 }
 
 

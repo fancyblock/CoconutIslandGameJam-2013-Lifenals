@@ -226,6 +226,46 @@ void GridSpace::GetRandomBlankNeighbor( SpriteLife* life, int& x, int& y )
 }
 
 
+void GridSpace::GetRandomNeighbor( SpriteLife* life, int& x, int& y )
+{
+    int selfX, selfY;
+    int neighborCnt = 0;
+    
+    life->GetPosition( selfX, selfY );
+    
+    // get all neighbor
+    int gridX[4];
+    int gridY[4];
+    for( int i(0); i < 4; i++ )
+    {
+        gridInfo* grid = getGridInfo( selfX + g_offsetX[i], selfY + g_offsetY[i] );
+        
+        if( grid != NULL && grid->_life != NULL )
+        {
+            gridX[neighborCnt] = selfX + g_offsetX[i];
+            gridY[neighborCnt] = selfY + g_offsetY[i];
+            
+            neighborCnt++;
+        }
+    }
+    
+    // choose a random result
+    if( neighborCnt > 0 )
+    {
+        int idx = rand() % neighborCnt;
+        
+        x = gridX[idx];
+        y = gridY[idx];
+    }
+    else
+    {
+        x = -1;
+        y = -1;
+    }
+    
+}
+
+
 void GridSpace::MoveLife( SpriteLife* life, int x, int y )
 {
     int orgX, orgY;
