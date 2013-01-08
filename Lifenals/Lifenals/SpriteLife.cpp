@@ -76,8 +76,6 @@ void SpriteLife::onRemove()
 {
     // play some animation and then remove from parent
     m_lifeDisplay->Disappear();
-    
-    //TODO 
 }
 
 
@@ -125,6 +123,12 @@ void SpriteLife::onSlotChanged()
 }
 
 
+void SpriteLife::onDestory()
+{
+    m_displayLayer->removeChild( m_lifeDisplay->GetDisplay(), true );
+}
+
+
 int SpriteLife::GetStatus()
 {
     return m_status;
@@ -169,7 +173,14 @@ void SpriteLife::initDisplay()
 
 void SpriteLife::SetSelected( bool selected )
 {
-    //TODO 
+    if( selected )
+    {
+        m_lifeDisplay->GetDisplay()->setColor(ccc3( 222, 111, 44 ) );
+    }
+    else
+    {
+        m_lifeDisplay->GetDisplay()->setColor(ccc3(255,255,255));
+    }
 }
 
 

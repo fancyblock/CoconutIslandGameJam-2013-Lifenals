@@ -39,6 +39,7 @@ protected:
     static char* getLifeLookFileName( SpriteLife* life );
     
     void onDeactive();
+    void exit();
 };
 
 

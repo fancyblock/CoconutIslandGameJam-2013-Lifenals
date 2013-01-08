@@ -50,6 +50,22 @@ CCSprite* Nutrient::GetBottleSprite( int gene )
 }
 
 
+CCSprite* Nutrient::GetFlagSprite( int gene )
+{
+    char buff[20];
+    if( (gene+1) < 10 )
+    {
+        sprintf( buff, "M0%d_3.png", gene+1 );
+    }
+    else
+    {
+        sprintf( buff, "M%d_3.png", gene+1 );
+    }
+    
+    return CCSprite::createWithSpriteFrameName( buff );
+}
+
+
 Nutrient::Nutrient( int type )
 {
     m_valid = true;

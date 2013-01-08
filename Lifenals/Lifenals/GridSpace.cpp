@@ -109,10 +109,10 @@ bool GridSpace::RemoveLife( int posX, int posY )
     
     if( grid != NULL && grid->_life != NULL )
     {
-        return removeLife( grid->_life );
+        removeLife( grid->_life );
     }
     
-    return false;
+    return true;
 }
 
 
@@ -389,7 +389,7 @@ bool GridSpace::removeLife( SpriteLife* life )
         m_pendingLives->addObject( life );
     }
     
-    return false;
+    return true;
 }
 
 

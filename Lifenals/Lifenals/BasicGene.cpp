@@ -10,16 +10,16 @@
 
 const char* g_geneName[]=
 {
-    "GeneCopy",
-    "GeneMove",
-    "GeneJump",
-    "GeneAssimilation",
-    "GeneDestroy",
-    "GeneDestroyOther",
-    "GeneDisable",
-    "GeneRape",
-    "",
-    ""
+    "Gene Copy",
+    "Gene Move",
+    "Gene Jump",
+    "Gene Assimilation",
+    "Gene Destroy",
+    "Gene DestroyOther",
+    "Gene Disable",
+    "Gene Rape",
+    "Gene Inject",
+    "Gene MixGene"
 };
 
 

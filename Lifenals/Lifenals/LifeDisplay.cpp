@@ -69,7 +69,10 @@ void LifeDisplay::Appear()
 
 void LifeDisplay::Disappear()
 {
-    //TODO 
+    m_display->runAction( CCSequence::create(
+                                             CCFadeOut::create( 0.8f ),
+                                             CCCallFunc::create(this, callfunc_selector(LifeDisplay::exit)),
+                         NULL ));
 }
 
 
@@ -112,4 +115,8 @@ CCSprite* LifeDisplay::GetLifeSprite( SpriteLife* life )
 }
 
 
+void LifeDisplay::exit()
+{
+    m_host->onDestory();
+}
 

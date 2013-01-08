@@ -19,6 +19,7 @@ class Nutrient : public CCObject
 public:
     static CCSprite* GetCellSprite( int gene );
     static CCSprite* GetBottleSprite( int gene );
+    static CCSprite* GetFlagSprite( int gene );
     
 public:
     Nutrient( int type );

@@ -49,6 +49,7 @@ public:
     void onUpdate( float dt );
     void onActive();
     void onSlotChanged();
+    void onDestory();
     
 protected:
     Incubator* m_container;

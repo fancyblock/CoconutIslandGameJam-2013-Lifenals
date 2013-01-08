@@ -23,7 +23,8 @@ enum
     eGeneDestroyOther,
     eGeneDisable,
     eGeneRape,
-    //TODO
+    eGeneInject,
+    eGeneMixGene,
     eGeneCount
 };
 
