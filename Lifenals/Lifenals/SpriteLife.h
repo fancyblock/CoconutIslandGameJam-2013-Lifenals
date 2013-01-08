@@ -41,6 +41,7 @@ public:
     void SetDisplayLayer( CCNode* layer );
     ActionSlot* GetActionSlot();
     LifeDisplay* GetLifeDisplay();
+    void SetSelected( bool selected );
     
     void onAdd();
     void onRemove();

@@ -37,7 +37,7 @@ void LifeDisplay::Create( SpriteLife* life )
 {
     m_host = life;
     
-    char* frameName = getLifeLookFileName();
+    char* frameName = getLifeLookFileName( life );
     m_display = CCSprite::createWithSpriteFrameName( frameName );
     m_display->setPosition( ccp( 0, 0 ) );
     m_display->setOpacity( 0 );
@@ -83,11 +83,17 @@ void LifeDisplay::MoveTo( int x, int y )
 }
 
 
-char* LifeDisplay::getLifeLookFileName()
+void LifeDisplay::onDeactive()
+{
+    m_host->SetStatus( eAlive );
+}
+
+
+char* LifeDisplay::getLifeLookFileName( SpriteLife* life )
 {
     char* fileName = "germ_000.png";
     
-    ActionSlot* slot = m_host->GetActionSlot();
+    ActionSlot* slot = life->GetActionSlot();
     if( slot->GetGeneCount() > 0 )
     {
         int gene = slot->GetActionGene( 0 );
@@ -98,9 +104,12 @@ char* LifeDisplay::getLifeLookFileName()
 }
 
 
-void LifeDisplay::onDeactive()
+CCSprite* LifeDisplay::GetLifeSprite( SpriteLife* life )
 {
-    m_host->SetStatus( eAlive );
+    char* fileName = getLifeLookFileName( life );
+    
+    return CCSprite::createWithSpriteFrameName( fileName );
 }
+
 
 

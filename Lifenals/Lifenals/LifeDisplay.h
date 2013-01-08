@@ -18,6 +18,9 @@ class SpriteLife;
 class LifeDisplay : public CCObject
 {
 public:
+    static CCSprite* GetLifeSprite( SpriteLife* life );
+    
+public:
     LifeDisplay();
     ~LifeDisplay();
     void Create( SpriteLife* life );
@@ -33,7 +36,7 @@ protected:
     CCSprite* m_display;
     
 protected:
-    char* getLifeLookFileName();
+    static char* getLifeLookFileName( SpriteLife* life );
     
     void onDeactive();
 };

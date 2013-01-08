@@ -11,6 +11,7 @@
 
 using namespace std;
 
+#define DELAY_SILENCE_FRAME 2
 
 static int g_offsetX[] = { 1, 0, -1, 0 };
 static int g_offsetY[] = { 0, 1, 0, -1 };
@@ -19,8 +20,12 @@ static int g_offsetY[] = { 0, 1, 0, -1 };
 GridSpace::GridSpace()
 {
     m_displayLayer = NULL;
+    m_lifeDisplayLayer = NULL;
+    m_germDisplayLayer = NULL;
     m_grids = NULL;
+    m_germs = NULL;
     m_curActiveLife = -1;
+    m_silenceCnt = 0;
 }
 
 
@@ -39,6 +44,12 @@ GridSpace::~GridSpace()
 void GridSpace::Create( CCNode* layer )
 {
     m_displayLayer = layer;
+    m_lifeDisplayLayer = CCNode::create();
+    m_germDisplayLayer = CCNode::create();
+    m_lifeDisplayLayer->setPosition( ccp(0, 0));
+    m_germDisplayLayer->setPosition( ccp(0, 0));
+    m_displayLayer->addChild(m_germDisplayLayer, 0);
+    m_displayLayer->addChild(m_lifeDisplayLayer, 1);
     
     // create && initial the grid infos
     m_grids = new gridInfo*[GRID_SIZE_WID];
@@ -58,6 +69,8 @@ void GridSpace::Create( CCNode* layer )
     m_lives->retain();
     m_pendingLives = CCArray::createWithCapacity(GRID_SIZE_WID*GRID_SIZE_HEI);
     m_pendingLives->retain();
+    m_germs = CCArray::createWithCapacity(GRID_SIZE_WID*GRID_SIZE_HEI);
+    m_germs->retain();
 }
 
 
@@ -126,7 +139,13 @@ void GridSpace::Update( float elapsed )
      * @ limit this part to control the game speed 
      */
     int curActiveLife = getCurActiveLife();         // the index of the current active life ( >= 0 )
-    if( curActiveLife < 0 && lifeCnt > 0 )          // need to set a new one
+    if( curActiveLife < 0 )
+    {
+        m_silenceCnt++;
+    }
+    
+    if( curActiveLife < 0 && lifeCnt > 0
+        && m_silenceCnt > DELAY_SILENCE_FRAME )     // need to set a new one
     {
         m_curActiveLife++;
         m_curActiveLife %= lifeCnt;
@@ -134,7 +153,10 @@ void GridSpace::Update( float elapsed )
         life = (SpriteLife*)m_lives->objectAtIndex( m_curActiveLife );
         life->SetStatus( eActive );
         life->onActive();
+        
+        m_silenceCnt = 0;
     }
+
     // ------------------------------------------------------------------------------------------------
     
     // update the life
@@ -145,14 +167,15 @@ void GridSpace::Update( float elapsed )
     }
     
     // process the pending life ( remove || add new one )
+    gridInfo* grid = NULL;
+    int x, y;
     for( i = 0; i < m_pendingLives->count(); i++ )
     {
         life = (SpriteLife*)m_pendingLives->objectAtIndex( i );
         
         int status = life->GetStatus();
-        int x, y;
         life->GetPosition( x, y );
-        gridInfo* grid = getGridInfo( x, y );
+        grid = getGridInfo( x, y );
         
         // add life to the space 
         if( status == eAppear )
@@ -160,7 +183,7 @@ void GridSpace::Update( float elapsed )
             grid->_life = life;
             life->SetContainer( this );
             m_lives->addObject( life );
-            life->SetDisplayLayer( m_displayLayer );
+            life->SetDisplayLayer( m_lifeDisplayLayer );
             life->onAdd();
             
             life->SetStatus( eAlive );
@@ -177,6 +200,35 @@ void GridSpace::Update( float elapsed )
         }
     }
     m_pendingLives->removeAllObjects();
+    
+    // update nutrient
+    Nutrient* germ = NULL;
+    CCArray* removeList = CCArray::create();
+    for( i = 0; i < m_germs->count(); i++ )
+    {
+        germ = (Nutrient*)m_germs->objectAtIndex(i);
+        
+        germ->Update( elapsed, this );
+        
+        if( germ->IsValid() == false )
+        {
+            removeList->addObject( germ );
+        }
+    }
+    
+    // remove the invalid germ
+    for( i = 0; i < removeList->count(); i++ )
+    {
+        germ = (Nutrient*)removeList->objectAtIndex(i);
+        
+        germ->GetPosition(x, y);
+        grid = getGridInfo(x, y);
+        grid->_nutrient = NULL;
+        m_germs->removeObject( germ );
+        
+        germ->onRemove();
+    }
+    removeList->release();
     
 }
 
@@ -263,6 +315,26 @@ void GridSpace::GetRandomNeighbor( SpriteLife* life, int& x, int& y )
         y = -1;
     }
     
+}
+
+
+bool GridSpace::AddGerm( int gene, int x, int y )
+{
+    gridInfo* grid = getGridInfo( x, y );
+    
+    if( grid->_nutrient == NULL )
+    {
+        Nutrient* germ = new Nutrient( gene );
+        
+        grid->_nutrient = germ;
+        m_germs->addObject( germ );
+        
+        germ->SetPosition(x, y);
+        germ->SetDisplayLayer( m_germDisplayLayer );
+        germ->onAdd();
+    }
+    
+    return false;
 }
 
 

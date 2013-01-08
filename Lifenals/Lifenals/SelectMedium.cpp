@@ -10,9 +10,7 @@
 #include "GlobalWork.h"
 #include "GameLayer.h"
 #include "Common.h"
-#include <cstdio>
-
-using namespace std;
+#include "Nutrient.h"
 
 
 bool SelectMedium::init()
@@ -26,22 +24,16 @@ bool SelectMedium::init()
     
     CCMenu* menu = CCMenu::create();
     
-    char buff[20];
     for( int i(0); i < 10; i++ )
     {
-        if( i != 9 )
-            sprintf( buff, "M0%d_1.png", i+1 );
-        else
-            sprintf( buff, "M%d_1.png", i+1 );
-        
-        CCSprite* spr = CCSprite::createWithSpriteFrameName( buff );
-        CCSprite* spr2 = CCSprite::createWithSpriteFrameName( buff );
+        CCSprite* spr = Nutrient::GetBottleSprite(i);
+        CCSprite* spr2 = Nutrient::GetBottleSprite(i);
         spr2->setColor( ccc3(100, 200, 50) );
         
         CCMenuItemSprite* btnSpr = CCMenuItemSprite::create(spr, spr2, this, menu_selector(SelectMedium::onSelect));
         btnSpr->setScaleX(SGLOBAL.GetSizeFactorX());
         btnSpr->setScaleY(SGLOBAL.GetSizeFactorY());
-        btnSpr->setPosition(POS(380+i%5*100,260+(i)/5*100));
+        btnSpr->setPosition(POS(332+i%5*130,260+(i)/5*130));
         
         m_btnSet[i] = btnSpr;
         menu->addChild( btnSpr );
@@ -50,6 +42,7 @@ bool SelectMedium::init()
     menu->setPosition(0, 0);
     this->addChild( menu );
     
+    return true;
 }
 
 

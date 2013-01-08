@@ -42,13 +42,18 @@ public:
     virtual void GetRandomBlankNeighbor( SpriteLife* life, int& x, int& y );
     virtual void MoveLife( SpriteLife* life, int x, int y );
     virtual void GetRandomNeighbor( SpriteLife* life, int& x, int& y );
+    virtual bool AddGerm( int gene, int x, int y );
     
 protected:
     CCNode* m_displayLayer;
+    CCNode* m_lifeDisplayLayer;
+    CCNode* m_germDisplayLayer;
     gridInfo** m_grids;
     
     CCArray* m_lives;
     CCArray* m_pendingLives;
+    CCArray* m_germs;
+    int m_silenceCnt;
     
     int m_curActiveLife;
     

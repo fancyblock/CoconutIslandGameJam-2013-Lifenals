@@ -11,11 +11,9 @@
 #include "Common.h"
 #include "ActionSlot.h"
 #include "ActionGene.h"
-#include <cstdio>
 
-using namespace std;
 
-#define GRID_SPACE_X    276
+#define GRID_SPACE_X    275
 #define GRID_SPACE_Y    105
 
 
@@ -48,7 +46,11 @@ bool GameLayer::init()
     // var initial
     m_selectedGerm = -1;
     m_sprGermInfo = NULL;
-    //TODO
+    m_curGridX = -1;
+    m_curGridY = -1;
+    m_germPlaceholder = NULL;
+    m_uiLifeInfo = new LifeInfo();
+    m_uiLifeInfo->setPosition( POS(840, 320) );
     
     CCSpriteBatchNode* batchNode = CCSpriteBatchNode::create( "rawData.png" );
     this->addChild( batchNode );
@@ -137,10 +139,10 @@ void GameLayer::initGame()
     
     // add initial life into incubator
     SpriteLife* life = new SpriteLife();
-    life->GetActionSlot()->AddGene( eGeneCopy );
-    m_incubator->AddLife( life, 2, 2 );                 //[TEMP]
+    m_incubator->AddLife( life, 2, 3 );          //[TEMP]
     
     this->addChild( m_gameStuffLayer );
+    this->addChild( m_uiLifeInfo );
     
     EnableTouch( true );
 }
@@ -259,12 +261,7 @@ void GameLayer::refreshUI()
     {
         m_sprGermInfo = CCSprite::create();
         
-        char buff[20];
-        if( (m_selectedGerm+1) != 10 )
-            sprintf( buff, "M0%d_1.png", m_selectedGerm+1 );
-        else
-            sprintf( buff, "M%d_1.png", m_selectedGerm+1 );
-        CCSprite* imgLogo = CCSprite::createWithSpriteFrameName( buff );
+        CCSprite* imgLogo = Nutrient::GetBottleSprite(m_selectedGerm);
         
         m_sprGermInfo->addChild( imgLogo );
         CCLabelTTF* font = CCLabelTTF::create( g_geneName[m_selectedGerm], "arial.ttf", 14 );
@@ -275,36 +272,164 @@ void GameLayer::refreshUI()
         m_sprGermInfo->setScaleX( SGLOBAL.GetSizeFactorX() );
         m_sprGermInfo->setScaleY( SGLOBAL.GetSizeFactorY() );
         this->addChild( m_sprGermInfo );
+        
+        if( m_curGridX >= 0 ) // && m_curGridY >= 0
+        {
+            if( m_germPlaceholder == NULL )
+            {
+                m_germPlaceholder = Nutrient::GetCellSprite( m_selectedGerm );
+                m_germPlaceholder->setOpacity( 150 );
+                this->addChild( m_germPlaceholder );
+            }
+            
+            int x, y;
+            GridToScreen( m_curGridX, m_curGridY, x, y );
+            m_germPlaceholder->setPosition( POS( x, y ) );
+        }
     }
     
     //TODO 
+    
 }
 
 
 void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
     CCTouch* pTouch = (CCTouch*)pTouches->anyObject();
-    CCPoint pt = pTouch->getLocationInView();
-    CCLog( "[Pos]: %.2f, %.2f", pt.x, pt.y );
+    CCPoint pt = pTouch->getLocation();
     
-    //TODO
+    int x, y;
+    ScreenToGrid( pt, x, y );
+    
+    // put nutrient 
+    if( m_selectedGerm >= 0 )
+    {
+        if( x >= 0 ) // && y >= 0
+        {
+            m_curGridX = x;
+            m_curGridY = y;
+        }
+        else
+        {
+            m_selectedGerm = -1;
+            m_curGridX = -1;
+            m_curGridY = -1;
+        }
+        
+        refreshUI();
+    }
 }
 
 
 void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
-    //TODO
+    CCTouch* pTouch = (CCTouch*)pTouches->anyObject();
+    CCPoint pt = pTouch->getLocation();
+    
+    int x, y;
+    ScreenToGrid( pt, x, y );
+    
+    // put nutrient
+    if( m_selectedGerm >= 0 )
+    {
+        if( x >= 0 ) // && y >= 0
+        {
+            m_curGridX = x;
+            m_curGridY = y;
+        }
+        
+        refreshUI();
+    }
 }
 
 
 void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
-    //TODO
+    CCTouch* pTouch = (CCTouch*)pTouches->anyObject();
+    CCPoint pt = pTouch->getLocation();
+    
+    int x, y;
+    ScreenToGrid( pt, x, y );
+    
+    // put nutrient
+    if( m_selectedGerm >= 0 )
+    {
+        if( x >= 0 ) // && y >= 0
+        {
+            // put the nutrient into this grid
+            m_incubator->AddGerm( m_selectedGerm, m_curGridX, m_curGridY );
+        }
+
+        m_selectedGerm = -1;
+        m_curGridX = -1;
+        m_curGridY = -1;
+        this->removeChild( m_germPlaceholder, true );
+        m_germPlaceholder = NULL;
+        
+        refreshUI();
+    }
+    // select a life
+    else
+    {
+        if( x >= 0 ) // && y >= 0
+        {
+            SpriteLife* life = m_incubator->GetLife(x, y);
+            
+            if( life != NULL )
+            {
+                m_uiLifeInfo->SetLife( life );
+            }
+            else
+            {
+                m_uiLifeInfo->SetLife( NULL );
+            }
+        }
+        else
+        {
+            m_uiLifeInfo->SetLife( NULL );
+        }
+    }
 }
 
 
 void GameLayer::ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent)
 {
-    //TODO 
+    if( m_selectedGerm >= 0 )
+    {
+        m_selectedGerm = -1;
+        refreshUI();
+    }
+}
+
+
+void GameLayer::ScreenToGrid( CCPoint& pt, int& x, int& y )
+{    
+    int xpos = pt.x / SGLOBAL.GetPositionFactorX();
+    int ypos = pt.y / SGLOBAL.GetPositionFactorY();
+    
+    int startX = GRID_SPACE_X - SPRITE_WID / 2;
+    int startY = GRID_SPACE_Y - SPRITE_HEI / 2;
+    
+    int endX = startX + SPRITE_WID * GRID_SIZE_WID;
+    int endY = startY + SPRITE_HEI * GRID_SIZE_HEI;
+    
+    if( xpos < startX || xpos > endX || ypos < startY || ypos > endY )
+    {
+        x = -1;
+        y = -1;
+    }
+    else
+    {
+        x = ( xpos - startX ) / SPRITE_WID;
+        y = ( ypos - startY ) / SPRITE_HEI;
+    }
+    
+}
+
+
+void GameLayer::GridToScreen( int x, int y, int& outX, int& outY )
+{
+    outX = GRID_SPACE_X + x * SPRITE_WID;
+    outY = GRID_SPACE_Y + y * SPRITE_HEI;
 }
 

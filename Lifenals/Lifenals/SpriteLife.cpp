@@ -167,6 +167,9 @@ void SpriteLife::initDisplay()
 }
 
 
-
+void SpriteLife::SetSelected( bool selected )
+{
+    //TODO 
+}
 
 

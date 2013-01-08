@@ -13,6 +13,7 @@
 #include "GridSpace.h"
 #include "SpriteLife.h"
 #include "SelectMedium.h"
+#include "LifeInfo.h"
 
 USING_NS_CC;
 
@@ -51,14 +52,19 @@ protected:
     
     SelectMedium* m_uiSelectMedium;
     CCMenu* m_menu;
+    LifeInfo* m_uiLifeInfo;
     
     int m_selectedGerm;
     CCSprite* m_sprGermInfo;
+    int m_curGridX;
+    int m_curGridY;
+    CCSprite* m_germPlaceholder;
     
 protected:
     void initGame();
     void refreshUI();
-    
+    void ScreenToGrid( CCPoint& pt, int& x, int& y );
+    void GridToScreen( int x, int y, int& outX, int& outY );
 };
 
 #endif

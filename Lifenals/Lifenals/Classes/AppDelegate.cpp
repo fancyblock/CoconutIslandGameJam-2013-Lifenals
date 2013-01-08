@@ -56,7 +56,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // load resource
     this->loadResource();
 
-    // create a scene. it's an autorelease object
+    // create a scene. it's an autorelease object 
     CCScene* pScene = MenuLayer::scene();
 
     // run

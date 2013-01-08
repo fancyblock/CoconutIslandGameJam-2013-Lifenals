@@ -207,6 +207,7 @@
 		CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */; };
 		CFCE96D8169AB76300F7F7D1 /* SelectMedium.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96D7169AB76300F7F7D1 /* SelectMedium.cpp */; };
 		CFCE96DA169AD46F00F7F7D1 /* arial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFCE96D9169AD46E00F7F7D1 /* arial.ttf */; };
+		CFCE96E1169BD0AF00F7F7D1 /* LifeInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCE96E0169BD0AF00F7F7D1 /* LifeInfo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -639,6 +640,8 @@
 		CFCE96D6169AB75600F7F7D1 /* SelectMedium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectMedium.h; sourceTree = "<group>"; };
 		CFCE96D7169AB76300F7F7D1 /* SelectMedium.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectMedium.cpp; sourceTree = "<group>"; };
 		CFCE96D9169AD46E00F7F7D1 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = arial.ttf; path = Resources/arial.ttf; sourceTree = "<group>"; };
+		CFCE96DF169BD0A100F7F7D1 /* LifeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LifeInfo.h; sourceTree = "<group>"; };
+		CFCE96E0169BD0AF00F7F7D1 /* LifeInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LifeInfo.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1515,6 +1518,8 @@
 				CFCE96C4169A23AF00F7F7D1 /* LifeDisplay.cpp */,
 				CFCE96A41698148200F7F7D1 /* SpriteLife.h */,
 				CFCE96A51698148D00F7F7D1 /* SpriteLife.cpp */,
+				CFCE96DF169BD0A100F7F7D1 /* LifeInfo.h */,
+				CFCE96E0169BD0AF00F7F7D1 /* LifeInfo.cpp */,
 			);
 			name = Life;
 			sourceTree = "<group>";
@@ -1771,6 +1776,7 @@
 				CFCE96D1169A81A900F7F7D1 /* GeneMove.cpp in Sources */,
 				CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */,
 				CFCE96D8169AB76300F7F7D1 /* SelectMedium.cpp in Sources */,
+				CFCE96E1169BD0AF00F7F7D1 /* LifeInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

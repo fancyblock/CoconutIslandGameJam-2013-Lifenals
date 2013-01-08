@@ -70,8 +70,6 @@ void GlobalWork::refreshFactor()
 {
     if( m_logicSize.width > 0 && m_logicSize.height > 0 )
     {
-        
-        
         m_positionFactor.x = m_screenSize.width / m_logicSize.width;
         m_positionFactor.y = m_screenSize.height / m_logicSize.height;
         
