@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0352C2169BF2F700C256E7 /* GeneAssimilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0352C1169BF2F600C256E7 /* GeneAssimilation.cpp */; };
+		CF0352C5169BF50D00C256E7 /* GeneInject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0352C4169BF50D00C256E7 /* GeneInject.cpp */; };
+		CF0352C8169BF7A400C256E7 /* GeneSubGene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0352C7169BF7A400C256E7 /* GeneSubGene.cpp */; };
+		CF0352CB169BF8F100C256E7 /* GeneDisable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0352CA169BF8F100C256E7 /* GeneDisable.cpp */; };
 		CFCE94131697265300F7F7D1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE94121697265300F7F7D1 /* QuartzCore.framework */; };
 		CFCE94151697265300F7F7D1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE94141697265300F7F7D1 /* OpenGLES.framework */; };
 		CFCE94171697265300F7F7D1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCE94161697265300F7F7D1 /* OpenAL.framework */; };
@@ -211,6 +215,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF0352BF169BF2ED00C256E7 /* GeneAssimilation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneAssimilation.h; sourceTree = "<group>"; };
+		CF0352C1169BF2F600C256E7 /* GeneAssimilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneAssimilation.cpp; sourceTree = "<group>"; };
+		CF0352C3169BF50400C256E7 /* GeneInject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneInject.h; sourceTree = "<group>"; };
+		CF0352C4169BF50D00C256E7 /* GeneInject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneInject.cpp; sourceTree = "<group>"; };
+		CF0352C6169BF79A00C256E7 /* GeneSubGene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneSubGene.h; sourceTree = "<group>"; };
+		CF0352C7169BF7A400C256E7 /* GeneSubGene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneSubGene.cpp; sourceTree = "<group>"; };
+		CF0352C9169BF8E700C256E7 /* GeneDisable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneDisable.h; sourceTree = "<group>"; };
+		CF0352CA169BF8F100C256E7 /* GeneDisable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeneDisable.cpp; sourceTree = "<group>"; };
 		CFCE940E1697265300F7F7D1 /* Lifenals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lifenals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCE94121697265300F7F7D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CFCE94141697265300F7F7D1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1507,6 +1519,14 @@
 				CFCE96D0169A81A900F7F7D1 /* GeneMove.cpp */,
 				CFCE96D3169A8A6B00F7F7D1 /* GeneDestroy.h */,
 				CFCE96D4169A8A7700F7F7D1 /* GeneDestroy.cpp */,
+				CF0352BF169BF2ED00C256E7 /* GeneAssimilation.h */,
+				CF0352C1169BF2F600C256E7 /* GeneAssimilation.cpp */,
+				CF0352C3169BF50400C256E7 /* GeneInject.h */,
+				CF0352C4169BF50D00C256E7 /* GeneInject.cpp */,
+				CF0352C6169BF79A00C256E7 /* GeneSubGene.h */,
+				CF0352C7169BF7A400C256E7 /* GeneSubGene.cpp */,
+				CF0352C9169BF8E700C256E7 /* GeneDisable.h */,
+				CF0352CA169BF8F100C256E7 /* GeneDisable.cpp */,
 			);
 			name = Gene;
 			sourceTree = "<group>";
@@ -1777,6 +1797,10 @@
 				CFCE96D5169A8A7800F7F7D1 /* GeneDestroy.cpp in Sources */,
 				CFCE96D8169AB76300F7F7D1 /* SelectMedium.cpp in Sources */,
 				CFCE96E1169BD0AF00F7F7D1 /* LifeInfo.cpp in Sources */,
+				CF0352C2169BF2F700C256E7 /* GeneAssimilation.cpp in Sources */,
+				CF0352C5169BF50D00C256E7 /* GeneInject.cpp in Sources */,
+				CF0352C8169BF7A400C256E7 /* GeneSubGene.cpp in Sources */,
+				CF0352CB169BF8F100C256E7 /* GeneDisable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1894,6 +1918,7 @@
 				CFCE968A1697265800F7F7D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

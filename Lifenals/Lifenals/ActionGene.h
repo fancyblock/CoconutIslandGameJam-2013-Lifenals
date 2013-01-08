@@ -20,11 +20,11 @@ enum
     eGeneJump,
     eGeneAssimilation,
     eGeneDestroy,
-    eGeneDestroyOther,
     eGeneDisable,
     eGeneRape,
     eGeneInject,
     eGeneMixGene,
+    eGeneSubGene,
     eGeneCount
 };
 

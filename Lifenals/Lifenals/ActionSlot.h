@@ -27,6 +27,7 @@ public:
     void RemoveGene( int geneType );
     void CleanAllGene();
     void CloneFrom( ActionSlot* actionSlot );
+    void PopBackGene();
     
 protected:
     vector<int> m_actionGenes;

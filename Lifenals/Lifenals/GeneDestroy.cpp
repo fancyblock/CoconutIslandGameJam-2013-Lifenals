@@ -28,7 +28,6 @@ void GeneDestroy::Start( SpriteLife* life )
     BasicGene::Start( life );
     
     int x, y;
-    
     Incubator* incubator = life->GetContainer();
     incubator->GetRandomNeighbor( life, x, y );
     

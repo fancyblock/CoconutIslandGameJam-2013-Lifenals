@@ -68,6 +68,15 @@ void ActionSlot::RemoveGene( int geneType )
 }
 
 
+void ActionSlot::PopBackGene()
+{    
+    if( m_actionGenes.size() > 0 )
+    {
+        m_actionGenes.pop_back();
+    }
+}
+
+
 void ActionSlot::CleanAllGene()
 {    
     m_actionGenes.clear();
